@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Result.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, cover, drawChar, session, type Frames } from '../art.js';
@@ -18,7 +19,7 @@ export class GameOver extends Scene {
   override update(dt: number): void {
     super.update(dt);
     this.t += dt;
-    const p = this.input.pointer, c = this.click.poll(p);
+    const p = mobilePointer(this.input.pointer), c = this.click.poll(p);
     if (this.input.keys.again.pressed || (c && inside(p, this.again))) this.gotoPlay();
     else if (this.input.keys.menu.pressed || (c && inside(p, this.menu))) this.game.go('select');
   }
@@ -32,7 +33,7 @@ export class GameOver extends Scene {
     r.survivors.forEach((k, i) => drawChar(d, g, this.f[k], cx + (i - (r.survivors.length - 1) / 2) * 170, 500 - Math.abs(Math.sin(this.t * 4 + i)) * 16, 240, { flipX: !r.win }));
     this.again = { x: cx - 250, y: H - 110, w: 230, h: 60 };
     this.menu = { x: cx + 20, y: H - 110, w: 230, h: 60 };
-    button(d, g, this.again, '再戰一次', this.input.pointer, { color: '#b8742a', hover: '#e0923a', size: 26 });
-    button(d, g, this.menu, '重新編隊', this.input.pointer, { size: 26 });
+    button(d, g, this.again, '再戰一次', mobilePointer(this.input.pointer), { color: '#b8742a', hover: '#e0923a', size: 26 });
+    button(d, g, this.menu, '重新編隊', mobilePointer(this.input.pointer), { size: 26 });
   }
 }

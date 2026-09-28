@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Pick three players; the CPU fields three of the rest.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, drawCourt, drawChar, type Frames } from '../art.js';
@@ -47,7 +48,7 @@ export class Select extends Scene {
     if (k.up.pressed || k.down.pressed) this.cursor = (this.cursor + 4) % 8;
     if (k.pick.pressed) { if (this.picks.length === 3 && this.picks.includes(BALLERS[this.cursor].id)) this.start(); else this.toggle(this.cursor); }
     if (k.back.pressed) this.gotoTitle();
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     if (this.click.poll(p)) {
       this.cards.forEach((r, i) => { if (inside(p, r)) { this.cursor = i; this.toggle(i); } });
       if (inside(p, this.go)) this.start();
@@ -84,7 +85,7 @@ export class Select extends Scene {
       }
     });
     this.go = { x: cx - 150, y: H - 86, w: 300, h: 60 };
-    button(d, g, this.go, this.picks.length === 3 ? '上場比賽！' : '請選滿 3 人', this.input.pointer, { color: this.picks.length === 3 ? '#d9452b' : '#555a70', hover: this.picks.length === 3 ? '#ff6a47' : '#555a70', size: 28 });
+    button(d, g, this.go, this.picks.length === 3 ? '上場比賽！' : '請選滿 3 人', mobilePointer(this.input.pointer), { color: this.picks.length === 3 ? '#d9452b' : '#555a70', hover: this.picks.length === 3 ? '#ff6a47' : '#555a70', size: 28 });
     label(d, g, '點擊卡片或方向鍵＋Space 選擇　Esc 返回', cx, H - 14, { size: 16, color: '#dddddd' });
   }
 }

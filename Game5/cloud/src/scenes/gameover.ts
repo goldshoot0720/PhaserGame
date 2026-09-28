@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Match result.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, cover, drawFighter, type Frames } from '../art.js';
@@ -21,7 +22,7 @@ export class GameOver extends Scene {
   override update(dt: number): void {
     super.update(dt);
     this.t += dt;
-    const p = this.input.pointer, c = this.click.poll(p);
+    const p = mobilePointer(this.input.pointer), c = this.click.poll(p);
     if (this.t < 0.8) return;
     if (this.input.keys.again.pressed || (c && inside(p, this.again))) this.gotoPlay();
     else if (this.input.keys.menu.pressed || (c && inside(p, this.menu))) this.game.go('select');
@@ -39,7 +40,7 @@ export class GameOver extends Scene {
     label(d, g, `「${r.name}：還要再來一場嗎？」`, cx, H - 110, { size: 26, color: '#ffffff', stroke: '#000000', strokeWidth: 5 });
     this.again = { x: cx - 250, y: H - 84, w: 230, h: 58 };
     this.menu = { x: cx + 20, y: H - 84, w: 230, h: 58 };
-    button(d, g, this.again, '再戰一場', this.input.pointer, { color: '#d9452b', hover: '#ff6a47', size: 26 });
-    button(d, g, this.menu, '重選角色', this.input.pointer, { size: 26 });
+    button(d, g, this.again, '再戰一場', mobilePointer(this.input.pointer), { color: '#d9452b', hover: '#ff6a47', size: 26 });
+    button(d, g, this.menu, '重選角色', mobilePointer(this.input.pointer), { size: 26 });
   }
 }

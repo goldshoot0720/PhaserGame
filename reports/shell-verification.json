@@ -1,0 +1,20 @@
+[
+  {
+    "mobile": false,
+    "ok": true,
+    "search": true,
+    "pause": true,
+    "guidePauseResume": true,
+    "restart": true,
+    "errors": []
+  },
+  {
+    "mobile": true,
+    "ok": true,
+    "search": true,
+    "pause": true,
+    "guidePauseResume": true,
+    "restart": true,
+    "errors": []
+  }
+]

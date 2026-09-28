@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Results: finishing order and times.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, drawBottom, cover, type Frames } from '../art.js';
@@ -23,7 +24,7 @@ export class GameOver extends Scene {
   override update(dt: number): void {
     super.update(dt);
     this.t += dt;
-    const p = this.input.pointer, c = this.click.poll(p);
+    const p = mobilePointer(this.input.pointer), c = this.click.poll(p);
     if (this.input.keys.again.pressed || (c && inside(p, this.again))) this.game.go('race');
     else if (this.input.keys.menu.pressed || (c && inside(p, this.menu))) this.game.go('select');
   }
@@ -57,7 +58,7 @@ export class GameOver extends Scene {
     });
     this.again = { x: cx - 250, y: H - 104, w: 230, h: 60 };
     this.menu = { x: cx + 20, y: H - 104, w: 230, h: 60 };
-    button(d, g, this.again, '再跑一次', this.input.pointer, { color: '#d9452b', hover: '#ff6a47', size: 26 });
-    button(d, g, this.menu, '更換車手/賽道', this.input.pointer, { size: 24 });
+    button(d, g, this.again, '再跑一次', mobilePointer(this.input.pointer), { color: '#d9452b', hover: '#ff6a47', size: 26 });
+    button(d, g, this.menu, '更換車手/賽道', mobilePointer(this.input.pointer), { size: 24 });
   }
 }

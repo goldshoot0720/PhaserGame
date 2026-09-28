@@ -1,0 +1,18 @@
+{
+  "name": "moe-game-collection-desktop",
+  "version": "1.0.0",
+  "description": "Twelve offline Moe Friends arcade games",
+  "author": "goldshoot0720",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {"package": "electron-builder --win zip --x64 --publish never"},
+  "devDependencies": {"electron": "44.4.5", "electron-builder": "26.15.3"},
+  "build": {
+    "appId": "com.goldshoot.phaser",
+    "productName": "MoeGameCollection",
+    "directories": {"output": "../../release"},
+    "files": ["main.cjs", "site/**/*"],
+    "win": {"target": ["zip"], "signAndEditExecutable": false},
+    "artifactName": "MoeGameCollection-${version}-windows-x64.${ext}"
+  }
+}

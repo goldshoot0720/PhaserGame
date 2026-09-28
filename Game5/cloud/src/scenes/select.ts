@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Character + stage select for P1 and P2/CPU.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, cover, drawFighter, type Frames } from '../art.js';
@@ -52,7 +53,7 @@ export class Select extends Scene {
       if (U || D) this.cur[ci] = (this.cur[ci] + 4) % 8;
       if ((w === 0 && k.ok1.pressed) || (w === 1 && k.ok2.pressed) || (solo && k.ok2.pressed)) this.confirm();
     }
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     if (this.click.poll(p)) {
       if (this.step === 2) this.confirm();
       else this.cards.forEach((r, j) => { if (inside(p, r)) { const ci = this.step === 0 ? 0 : 1; if (this.cur[ci] === j) this.confirm(); else this.cur[ci] = j; } });

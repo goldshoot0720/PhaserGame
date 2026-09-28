@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Result.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, cover, fit, session } from '../art.js';
@@ -18,7 +19,7 @@ export class GameOver extends Scene {
   override update(dt: number): void {
     super.update(dt);
     this.t += dt;
-    const p = this.input.pointer, c = this.click.poll(p);
+    const p = mobilePointer(this.input.pointer), c = this.click.poll(p);
     if (this.t > 0.8 && (this.input.keys.again.pressed || (c && inside(p, this.again)))) this.gotoPlay();
   }
   override draw(d: Draw): void {
@@ -31,6 +32,6 @@ export class GameOver extends Scene {
     label(d, g, `共 ${r?.turns ?? 0} 回合`, cx, 240, { size: 28, color: '#ffffff', stroke: '#000000', strokeWidth: 5 });
     CARDS.forEach((c, i) => fit(d, g, this.f[c.id], cx + (i - 3.5) * 110, 520 - Math.abs(Math.sin(this.t * 4 + i)) * 16, 170));
     this.again = { x: cx - 130, y: H - 110, w: 260, h: 62 };
-    button(d, g, this.again, '再來一局', this.input.pointer, { color: '#b8742a', hover: '#e0923a', size: 28 });
+    button(d, g, this.again, '再來一局', mobilePointer(this.input.pointer), { color: '#b8742a', hover: '#e0923a', size: 28 });
   }
 }

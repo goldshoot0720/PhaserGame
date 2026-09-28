@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // The duel table: click cards to play, click a ready minion then a target to attack.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, cover, fit, ART, session } from '../art.js';
@@ -100,7 +101,7 @@ export class Duel extends Scene {
       }
       return;
     }
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     const down = !!p?.isDown, click = down && !this.wasDown;
     this.wasDown = down;
     this.hover = null;
@@ -177,7 +178,7 @@ export class Duel extends Scene {
     this.endBtn = { x: W - 190, y: H / 2 - 30, w: 160, h: 56 };
     const mine = b.current === YOU;
     const noMoves = mine && !b.hasAnyAction(YOU);
-    button(d, g, this.endBtn, mine ? '結束回合' : '對手思考中…', this.input.pointer, { color: !mine ? '#555a70' : noMoves ? (Math.floor(this.t * 3) % 2 ? '#2f9e5a' : '#3fbf70') : '#b8742a', hover: mine ? '#e0923a' : '#555a70', size: 22 });
+    button(d, g, this.endBtn, mine ? '結束回合' : '對手思考中…', mobilePointer(this.input.pointer), { color: !mine ? '#555a70' : noMoves ? (Math.floor(this.t * 3) % 2 ? '#2f9e5a' : '#3fbf70') : '#b8742a', hover: mine ? '#e0923a' : '#555a70', size: 22 });
     // Hover preview.
     if (this.hover) { const hc = hand.find((h) => h.uid === this.hover); if (hc) this.drawCard(d, getCard(hc.cardId), W - 230, 110, 1.6, b.canPlay(YOU, hc.uid)); }
     for (const fl of this.floats) label(d, g, fl.text, fl.x, fl.y, { size: 22, color: fl.color, stroke: '#000000', strokeWidth: 5, weight: 900 }, 0.5, 0.5, clamp(fl.t * 2, 0, 1));

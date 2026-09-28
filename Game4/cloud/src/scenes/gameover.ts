@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Ending.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadMenu, frames, cover, portrait } from '../common.js';
@@ -18,7 +19,7 @@ export class GameOver extends Scene {
   override update(dt: number): void {
     super.update(dt);
     this.t += dt;
-    if (this.t > 2 && (this.input.keys.ok.pressed || this.click.poll(this.input.pointer))) this.gotoTitle();
+    if (this.t > 2 && (this.input.keys.ok.pressed || this.click.poll(mobilePointer(this.input.pointer)))) this.gotoTitle();
   }
   override draw(d: Draw): void {
     super.draw(d);

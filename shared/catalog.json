@@ -1,0 +1,874 @@
+[
+  {
+    "id": 1,
+    "project": "9rwJkwrCkfc",
+    "title": "萌友棒球對決",
+    "genre": "棒球",
+    "summary": "揮棒、配球，拿下三局對決。",
+    "logo": "shared/media/9rwJkwrCkfc/art/moe-baseball-showdown/logo-75aa9d66bf.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/stadium2/bg-32fdccee5f.png",
+        "file": "shared/media/9rwJkwrCkfc/art/stadium2/bg-32fdccee5f.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/moe-baseball-showdown/logo-75aa9d66bf.png",
+        "file": "shared/media/9rwJkwrCkfc/art/moe-baseball-showdown/logo-75aa9d66bf.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/music/a-cute-anime-baseball-game-in-a-sunny-st-f43430009283.mp3",
+        "file": "shared/media/9rwJkwrCkfc/music/a-cute-anime-baseball-game-in-a-sunny-st-f43430009283.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "project": "qShMT5e7fmJ",
+    "title": "萌友街頭 3x3",
+    "genre": "籃球",
+    "summary": "組成三人球隊，傳球切入與精準投籃。",
+    "logo": "shared/media/qShMT5e7fmJ/art/moe-street-3x3/logo-1cf24ca37a.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/qShMT5e7fmJ/art/court/bg-0929a696cc.png",
+        "file": "shared/media/qShMT5e7fmJ/art/court/bg-0929a696cc.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/qShMT5e7fmJ/art/moe-street-3x3/logo-1cf24ca37a.png",
+        "file": "shared/media/qShMT5e7fmJ/art/moe-street-3x3/logo-1cf24ca37a.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/qShMT5e7fmJ/music/a-cute-street-basketball-3-on-3-game-at-ccae05215c3e.mp3",
+        "file": "shared/media/qShMT5e7fmJ/music/a-cute-street-basketball-3-on-3-game-at-ccae05215c3e.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "project": "FjxcDnWNvMB",
+    "title": "萌友卡丁車 GP",
+    "genre": "賽車",
+    "summary": "三條賽道、八位車手，甩尾衝向終點。",
+    "logo": "shared/media/FjxcDnWNvMB/art/moe-kart-gp/logo-17df613531.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/moe-kart-gp/logo-17df613531.png",
+        "file": "shared/media/FjxcDnWNvMB/art/moe-kart-gp/logo-17df613531.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/props/props-1-a5a677f5b0.png",
+        "file": "shared/media/FjxcDnWNvMB/art/props/props-1-a5a677f5b0.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/props/props-2-b736ac6168.png",
+        "file": "shared/media/FjxcDnWNvMB/art/props/props-2-b736ac6168.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/props/props-3-9ed05008f4.png",
+        "file": "shared/media/FjxcDnWNvMB/art/props/props-3-9ed05008f4.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/items/items-1-e40be863b1.png",
+        "file": "shared/media/FjxcDnWNvMB/art/items/items-1-e40be863b1.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/items/items-2-11eedfdb97.png",
+        "file": "shared/media/FjxcDnWNvMB/art/items/items-2-11eedfdb97.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/music/a-cute-fast-kart-racing-game-high-energy-3e4e5fd8c31b.mp3",
+        "file": "shared/media/FjxcDnWNvMB/music/a-cute-fast-kart-racing-game-high-energy-3e4e5fd8c31b.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/karts-a/karts-a-1-71f8d49787.png",
+        "file": "shared/media/FjxcDnWNvMB/art/karts-a/karts-a-1-71f8d49787.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/karts-a/karts-a-2-c683c0f4bf.png",
+        "file": "shared/media/FjxcDnWNvMB/art/karts-a/karts-a-2-c683c0f4bf.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/karts-b/karts-b-1-0741c3b10c.png",
+        "file": "shared/media/FjxcDnWNvMB/art/karts-b/karts-b-1-0741c3b10c.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/karts-b/karts-b-2-b8ec9fa0e9.png",
+        "file": "shared/media/FjxcDnWNvMB/art/karts-b/karts-b-2-b8ec9fa0e9.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/karts-c/karts-c-1-5c51dba11d.png",
+        "file": "shared/media/FjxcDnWNvMB/art/karts-c/karts-c-1-5c51dba11d.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/karts-c/karts-c-2-89b57afb1f.png",
+        "file": "shared/media/FjxcDnWNvMB/art/karts-c/karts-c-2-89b57afb1f.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/karts-d/karts-d-1-ebd7ab04b7.png",
+        "file": "shared/media/FjxcDnWNvMB/art/karts-d/karts-d-1-ebd7ab04b7.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/karts-d/karts-d-2-425a510694.png",
+        "file": "shared/media/FjxcDnWNvMB/art/karts-d/karts-d-2-425a510694.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/sky-ocean/bg-68fc474dc9.png",
+        "file": "shared/media/FjxcDnWNvMB/art/sky-ocean/bg-68fc474dc9.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/sky-snow/bg-47d2455d4e.png",
+        "file": "shared/media/FjxcDnWNvMB/art/sky-snow/bg-47d2455d4e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/FjxcDnWNvMB/art/sky-neon/bg-71e3fc45e5.png",
+        "file": "shared/media/FjxcDnWNvMB/art/sky-neon/bg-71e3fc45e5.png"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "project": "78wQyqoVoGi",
+    "title": "萌友洛克英雄",
+    "genre": "動作",
+    "summary": "挑戰七位頭目，收集武器攻入最終要塞。",
+    "logo": "shared/media/78wQyqoVoGi/art/moe-rock-heroes/logo-ddbdd9f220.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/enemies/enemies-1-4a2566f221.png",
+        "file": "shared/media/78wQyqoVoGi/art/enemies/enemies-1-4a2566f221.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/enemies/enemies-2-603b647894.png",
+        "file": "shared/media/78wQyqoVoGi/art/enemies/enemies-2-603b647894.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/enemies/enemies-3-2656b1a170.png",
+        "file": "shared/media/78wQyqoVoGi/art/enemies/enemies-3-2656b1a170.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/moe-rock-heroes/logo-ddbdd9f220.png",
+        "file": "shared/media/78wQyqoVoGi/art/moe-rock-heroes/logo-ddbdd9f220.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/music/a-mega-man-style-action-platformer-stage-e1af7374c5af.mp3",
+        "file": "shared/media/78wQyqoVoGi/music/a-mega-man-style-action-platformer-stage-e1af7374c5af.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/music/a-robot-master-boss-battle-in-a-mega-man-71723e713b70.mp3",
+        "file": "shared/media/78wQyqoVoGi/music/a-robot-master-boss-battle-in-a-mega-man-71723e713b70.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/citadel-guardian/citadel-guardian-1-cc1530309e.png",
+        "file": "shared/media/78wQyqoVoGi/art/citadel-guardian/citadel-guardian-1-cc1530309e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/citadel-guardian/citadel-guardian-2-3667ef2690.png",
+        "file": "shared/media/78wQyqoVoGi/art/citadel-guardian/citadel-guardian-2-3667ef2690.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/citadel-guardian/citadel-guardian-3-df82cc871a.png",
+        "file": "shared/media/78wQyqoVoGi/art/citadel-guardian/citadel-guardian-3-df82cc871a.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/bg-whale/bg-f4509df7a6.png",
+        "file": "shared/media/78wQyqoVoGi/art/bg-whale/bg-f4509df7a6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/bg-penguin/bg-2f0873aa4d.png",
+        "file": "shared/media/78wQyqoVoGi/art/bg-penguin/bg-2f0873aa4d.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/bg-glasses/bg-3f324b7735.png",
+        "file": "shared/media/78wQyqoVoGi/art/bg-glasses/bg-3f324b7735.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/bg-tshirt/bg-e89a9601b4.png",
+        "file": "shared/media/78wQyqoVoGi/art/bg-tshirt/bg-e89a9601b4.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/bg-calico/bg-56c71df462.png",
+        "file": "shared/media/78wQyqoVoGi/art/bg-calico/bg-56c71df462.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/bg-library/bg-f938fe3c1a.png",
+        "file": "shared/media/78wQyqoVoGi/art/bg-library/bg-f938fe3c1a.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/bg-redcat/bg-c8b075799a.png",
+        "file": "shared/media/78wQyqoVoGi/art/bg-redcat/bg-c8b075799a.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/bg-sailor/bg-1f97f8f99f.png",
+        "file": "shared/media/78wQyqoVoGi/art/bg-sailor/bg-1f97f8f99f.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/bg-final/bg-16fbbf15c0.png",
+        "file": "shared/media/78wQyqoVoGi/art/bg-final/bg-16fbbf15c0.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/78wQyqoVoGi/art/core-citadel/bg-f662e3014b.png",
+        "file": "shared/media/78wQyqoVoGi/art/core-citadel/bg-f662e3014b.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "project": "furxwDwPzGM",
+    "title": "萌友格鬥王",
+    "genre": "格鬥",
+    "summary": "掌握防禦、連段與必殺技，單人或雙人對戰。",
+    "logo": "shared/media/furxwDwPzGM/art/moe-fighters/logo-782728d0de.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/moe-fighters/logo-782728d0de.png",
+        "file": "shared/media/furxwDwPzGM/art/moe-fighters/logo-782728d0de.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/music/a-cute-anime-2d-fighting-game-battle-the-41e18202074d.mp3",
+        "file": "shared/media/furxwDwPzGM/music/a-cute-anime-2d-fighting-game-battle-the-41e18202074d.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/ft-a/ft-a-1-d6d9e5004e.png",
+        "file": "shared/media/furxwDwPzGM/art/ft-a/ft-a-1-d6d9e5004e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/ft-a/ft-a-2-08888a03a3.png",
+        "file": "shared/media/furxwDwPzGM/art/ft-a/ft-a-2-08888a03a3.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/ft-b/ft-b-1-9cdf33f9b4.png",
+        "file": "shared/media/furxwDwPzGM/art/ft-b/ft-b-1-9cdf33f9b4.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/ft-b/ft-b-2-09bfffa4a1.png",
+        "file": "shared/media/furxwDwPzGM/art/ft-b/ft-b-2-09bfffa4a1.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/ft-c/ft-c-1-b49ea6e4d6.png",
+        "file": "shared/media/furxwDwPzGM/art/ft-c/ft-c-1-b49ea6e4d6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/ft-c/ft-c-2-da00f0034f.png",
+        "file": "shared/media/furxwDwPzGM/art/ft-c/ft-c-2-da00f0034f.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/ft-d/ft-d-1-88a3f9c134.png",
+        "file": "shared/media/furxwDwPzGM/art/ft-d/ft-d-1-88a3f9c134.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/ft-d/ft-d-2-56b955f32a.png",
+        "file": "shared/media/furxwDwPzGM/art/ft-d/ft-d-2-56b955f32a.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/stage-dojo/bg-69a2d1d621.png",
+        "file": "shared/media/furxwDwPzGM/art/stage-dojo/bg-69a2d1d621.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/stage-harbor/bg-f4848bf393.png",
+        "file": "shared/media/furxwDwPzGM/art/stage-harbor/bg-f4848bf393.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/furxwDwPzGM/art/stage-rooftop/bg-75899cb136.png",
+        "file": "shared/media/furxwDwPzGM/art/stage-rooftop/bg-75899cb136.png"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "project": "pqEUqeub1aN",
+    "title": "萌友戰棋・八方對決",
+    "genre": "戰棋",
+    "summary": "四人小隊，在地形與反擊之間找出勝機。",
+    "logo": "shared/media/pqEUqeub1aN/art/moe-tactics/logo-5df370de4f.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/pqEUqeub1aN/art/tiles-a/tiles-a-1-e5c6f551ed.png",
+        "file": "shared/media/pqEUqeub1aN/art/tiles-a/tiles-a-1-e5c6f551ed.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/pqEUqeub1aN/art/tiles-a/tiles-a-2-52aaac485c.png",
+        "file": "shared/media/pqEUqeub1aN/art/tiles-a/tiles-a-2-52aaac485c.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/pqEUqeub1aN/art/tiles-b/tiles-b-1-83eb27ff94.png",
+        "file": "shared/media/pqEUqeub1aN/art/tiles-b/tiles-b-1-83eb27ff94.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/pqEUqeub1aN/art/tiles-b/tiles-b-2-aa1b175eb9.png",
+        "file": "shared/media/pqEUqeub1aN/art/tiles-b/tiles-b-2-aa1b175eb9.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/pqEUqeub1aN/art/tiles-c/tiles-c-1-b93bd4cc71.png",
+        "file": "shared/media/pqEUqeub1aN/art/tiles-c/tiles-c-1-b93bd4cc71.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/pqEUqeub1aN/art/war-table/bg-a914986556.png",
+        "file": "shared/media/pqEUqeub1aN/art/war-table/bg-a914986556.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/pqEUqeub1aN/art/moe-tactics/logo-5df370de4f.png",
+        "file": "shared/media/pqEUqeub1aN/art/moe-tactics/logo-5df370de4f.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/pqEUqeub1aN/music/a-cute-fantasy-turn-based-tactics-game-o-7db591dcac18.mp3",
+        "file": "shared/media/pqEUqeub1aN/music/a-cute-fantasy-turn-based-tactics-game-o-7db591dcac18.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "project": "S7sNJTEcx8r",
+    "title": "萌友大亂鬥",
+    "genre": "射擊",
+    "summary": "八種專屬武器，爭奪補給與競技場冠軍。",
+    "logo": "shared/media/S7sNJTEcx8r/art/moe-arena-brawl/logo-3fd7e657d5.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/S7sNJTEcx8r/art/props/props-1-2b72158865.png",
+        "file": "shared/media/S7sNJTEcx8r/art/props/props-1-2b72158865.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/S7sNJTEcx8r/art/props/props-2-f0e24674ec.png",
+        "file": "shared/media/S7sNJTEcx8r/art/props/props-2-f0e24674ec.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/S7sNJTEcx8r/art/pickups/pickups-1-df1aff3af8.png",
+        "file": "shared/media/S7sNJTEcx8r/art/pickups/pickups-1-df1aff3af8.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/S7sNJTEcx8r/art/pickups/pickups-2-9fbf98cce7.png",
+        "file": "shared/media/S7sNJTEcx8r/art/pickups/pickups-2-9fbf98cce7.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/S7sNJTEcx8r/music/a-cute-but-frantic-top-down-arena-shoote-599878187c3e.mp3",
+        "file": "shared/media/S7sNJTEcx8r/music/a-cute-but-frantic-top-down-arena-shoote-599878187c3e.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/S7sNJTEcx8r/art/moe-arena-brawl/logo-3fd7e657d5.png",
+        "file": "shared/media/S7sNJTEcx8r/art/moe-arena-brawl/logo-3fd7e657d5.png"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "project": "peC2fwqocRE",
+    "title": "萌友卡牌對決",
+    "genre": "卡牌",
+    "summary": "分配法力、保護隊友，逐步取得場面優勢。",
+    "logo": "shared/media/peC2fwqocRE/art/moe-card-duel/logo-d86dfd3fcb.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/peC2fwqocRE/art/table/bg-60131598a6.png",
+        "file": "shared/media/peC2fwqocRE/art/table/bg-60131598a6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/peC2fwqocRE/art/cardback/cardback-1-c4adb3f953.png",
+        "file": "shared/media/peC2fwqocRE/art/cardback/cardback-1-c4adb3f953.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/peC2fwqocRE/art/moe-card-duel/logo-d86dfd3fcb.png",
+        "file": "shared/media/peC2fwqocRE/art/moe-card-duel/logo-d86dfd3fcb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/peC2fwqocRE/music/a-cozy-magical-tavern-card-game-duel-war-d21359aed8c7.mp3",
+        "file": "shared/media/peC2fwqocRE/music/a-cozy-magical-tavern-card-game-duel-war-d21359aed8c7.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "project": "P9PoxCYxWb4",
+    "title": "萌友大富翁",
+    "genre": "桌遊",
+    "summary": "購地、建屋、收租，經營你的城市版圖。",
+    "logo": "shared/media/P9PoxCYxWb4/art/art/logo-d81bfdfc45.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/P9PoxCYxWb4/art/art/logo-d81bfdfc45.png",
+        "file": "shared/media/P9PoxCYxWb4/art/art/logo-d81bfdfc45.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/P9PoxCYxWb4/art/buildings/buildings-1-61e729aec2.png",
+        "file": "shared/media/P9PoxCYxWb4/art/buildings/buildings-1-61e729aec2.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/P9PoxCYxWb4/art/buildings/buildings-2-9016b90210.png",
+        "file": "shared/media/P9PoxCYxWb4/art/buildings/buildings-2-9016b90210.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/P9PoxCYxWb4/music/a-cute-festive-board-game-like-monopoly-1a685bfc483e.mp3",
+        "file": "shared/media/P9PoxCYxWb4/music/a-cute-festive-board-game-like-monopoly-1a685bfc483e.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "project": "bCmTFAj6tW4",
+    "title": "萌友瘋狂坦克",
+    "genre": "砲擊",
+    "summary": "計算風向與彈道，用地形改變戰局。",
+    "logo": "shared/media/bCmTFAj6tW4/art/art/logo-ebf05ec450.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/bCmTFAj6tW4/art/art/logo-ebf05ec450.png",
+        "file": "shared/media/bCmTFAj6tW4/art/art/logo-ebf05ec450.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/bCmTFAj6tW4/art/props/props-1-4f8540f7f8.png",
+        "file": "shared/media/bCmTFAj6tW4/art/props/props-1-4f8540f7f8.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/bCmTFAj6tW4/art/props/props-2-1c4d00a666.png",
+        "file": "shared/media/bCmTFAj6tW4/art/props/props-2-1c4d00a666.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/bCmTFAj6tW4/music/a-cute-turn-based-artillery-tank-battle-c9875f9633bc.mp3",
+        "file": "shared/media/bCmTFAj6tW4/music/a-cute-turn-based-artillery-tank-battle-c9875f9633bc.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "project": "fvhg1h7jEMG",
+    "title": "萌友戰機 2026～2027",
+    "genre": "射擊",
+    "summary": "從海洋飛向宇宙，突破兩年度的彈幕。",
+    "logo": "shared/media/fvhg1h7jEMG/art/2026-2027/logo-f63a5d1642.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/fvhg1h7jEMG/art/2026-2027/logo-f63a5d1642.png",
+        "file": "shared/media/fvhg1h7jEMG/art/2026-2027/logo-f63a5d1642.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/fvhg1h7jEMG/art/ships-a/ships-a-1-7a31cc0661.png",
+        "file": "shared/media/fvhg1h7jEMG/art/ships-a/ships-a-1-7a31cc0661.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/fvhg1h7jEMG/art/ships-a/ships-a-2-4d109e960d.png",
+        "file": "shared/media/fvhg1h7jEMG/art/ships-a/ships-a-2-4d109e960d.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/fvhg1h7jEMG/art/ships-b/ships-b-1-e64a532bd0.png",
+        "file": "shared/media/fvhg1h7jEMG/art/ships-b/ships-b-1-e64a532bd0.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/fvhg1h7jEMG/art/ships-b/ships-b-2-693cb07dd7.png",
+        "file": "shared/media/fvhg1h7jEMG/art/ships-b/ships-b-2-693cb07dd7.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/fvhg1h7jEMG/art/boss-a/boss-a-1-df867533cc.png",
+        "file": "shared/media/fvhg1h7jEMG/art/boss-a/boss-a-1-df867533cc.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/fvhg1h7jEMG/art/boss-b/boss-b-1-1bc499cad0.png",
+        "file": "shared/media/fvhg1h7jEMG/art/boss-b/boss-b-1-1bc499cad0.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/fvhg1h7jEMG/art/ocean/bg-d168e07788.png",
+        "file": "shared/media/fvhg1h7jEMG/art/ocean/bg-d168e07788.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/fvhg1h7jEMG/art/space/bg-7545bc6a6d.png",
+        "file": "shared/media/fvhg1h7jEMG/art/space/bg-7545bc6a6d.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/fvhg1h7jEMG/music/a-fast-vertical-arcade-shoot-em-up-like-1b2b750a6c4e.mp3",
+        "file": "shared/media/fvhg1h7jEMG/music/a-fast-vertical-arcade-shoot-em-up-like-1b2b750a6c4e.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "project": "eVdsiqEdzeb",
+    "title": "萌友水球大作戰",
+    "genre": "迷宮",
+    "summary": "放置水球、安排退路，搶救自己並困住對手。",
+    "logo": "shared/media/eVdsiqEdzeb/art/art/logo-836852fee8.png",
+    "assets": [
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/eVdsiqEdzeb/art/art/logo-836852fee8.png",
+        "file": "shared/media/eVdsiqEdzeb/art/art/logo-836852fee8.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/eVdsiqEdzeb/art/blocks/blocks-1-27befd285e.png",
+        "file": "shared/media/eVdsiqEdzeb/art/blocks/blocks-1-27befd285e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/eVdsiqEdzeb/art/blocks/blocks-2-b3210269d6.png",
+        "file": "shared/media/eVdsiqEdzeb/art/blocks/blocks-2-b3210269d6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/eVdsiqEdzeb/art/balloon/balloon-1-3f5ec788ee.png",
+        "file": "shared/media/eVdsiqEdzeb/art/balloon/balloon-1-3f5ec788ee.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/eVdsiqEdzeb/art/balloon/balloon-2-b33e868d85.png",
+        "file": "shared/media/eVdsiqEdzeb/art/balloon/balloon-2-b33e868d85.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/eVdsiqEdzeb/art/items/items-1-781408f372.png",
+        "file": "shared/media/eVdsiqEdzeb/art/items/items-1-781408f372.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/eVdsiqEdzeb/art/items/items-2-344feed931.png",
+        "file": "shared/media/eVdsiqEdzeb/art/items/items-2-344feed931.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/eVdsiqEdzeb/music/a-cute-crazy-arcade-bomberman-style-wate-9052a8d97f45.mp3",
+        "file": "shared/media/eVdsiqEdzeb/music/a-cute-crazy-arcade-bomberman-style-wate-9052a8d97f45.mp3"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-1-42cf43b8cb.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-a/cast-a-2-4212161a03.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-1-1ae4cc393e.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-b/cast-b-2-fa52e60eb6.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-1-9a84c2e477.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-c/cast-c-2-4f3b04f575.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-1-a87eb32b86.png"
+      },
+      {
+        "url": "https://gameblocks.nyc3.digitaloceanspaces.com/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png",
+        "file": "shared/media/9rwJkwrCkfc/art/cast-d/cast-d-2-4e1a43adf1.png"
+      }
+    ]
+  }
+]

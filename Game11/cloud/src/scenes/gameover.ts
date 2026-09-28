@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Results.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadMenu, menuFrames, backdrop, spriteC } from '../menu.js';
@@ -20,7 +21,7 @@ export class GameOver extends Scene {
   override update(dt: number): void {
     super.update(dt);
     this.t += dt;
-    const p = this.input.pointer, c = this.click.poll(p);
+    const p = mobilePointer(this.input.pointer), c = this.click.poll(p);
     if (this.t < 0.8) return;
     if (this.input.keys.again.pressed || (c && inside(p, this.again))) this.gotoPlay();
     else if (this.input.keys.menu.pressed || (c && inside(p, this.menu))) this.game.go('select');
@@ -40,7 +41,7 @@ export class GameOver extends Scene {
     label(d, g, session.won ? '打倒 2026 戰艦與 2027 母艦' : `到達 ${STAGES[session.stage].year} 年・${STAGES[session.stage].name}`, cx + 150, 390, { size: 17, color: '#aac4ff' });
     this.again = { x: cx - 250, y: H - 84, w: 230, h: 58 };
     this.menu = { x: cx + 20, y: H - 84, w: 230, h: 58 };
-    button(d, g, this.again, '再次出擊', this.input.pointer, { color: '#e0567f', hover: '#ff7aa0', size: 26 });
-    button(d, g, this.menu, '換飛行員', this.input.pointer, { size: 26 });
+    button(d, g, this.again, '再次出擊', mobilePointer(this.input.pointer), { color: '#e0567f', hover: '#ff7aa0', size: 26 });
+    button(d, g, this.menu, '換飛行員', mobilePointer(this.input.pointer), { size: 26 });
   }
 }

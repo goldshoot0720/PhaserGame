@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Title: choose 1P vs CPU (with difficulty) or 2P versus.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, cover, drawFighter, type Frames } from '../art.js';
@@ -31,7 +32,7 @@ export class Title extends Scene {
     if (k.down.pressed) this.sel = (this.sel + 1) % 3;
     if (this.sel === 2 && (k.left.pressed || k.right.pressed)) this.choose(2);
     if (k.ok.pressed) this.choose(this.sel);
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     if (this.click.poll(p)) this.btns.forEach((r, i) => { if (inside(p, r)) { this.sel = i; this.choose(i); } });
   }
   override draw(d: Draw): void {
@@ -47,6 +48,6 @@ export class Title extends Scene {
     label(d, g, '萌友格鬥王', cx, H * 0.46, { size: 60, color: '#fff3a0', stroke: '#6a1010', strokeWidth: 9, weight: 900 });
     const labels = ['單人對戰電腦', '雙人對戰', `電腦難度：${DIFFS[session.difficulty]}`];
     this.btns = labels.map((_, i) => ({ x: cx - 170, y: H * 0.55 + i * 70, w: 340, h: 56 }));
-    labels.forEach((l, i) => button(d, g, this.btns[i], l, this.input.pointer, { selected: i === this.sel, size: 26 }));
+    labels.forEach((l, i) => button(d, g, this.btns[i], l, mobilePointer(this.input.pointer), { selected: i === this.sel, size: 26 }));
   }
 }

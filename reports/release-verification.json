@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "artifacts": [
+    {
+      "name": "MoeGameCollection-1.0.0-android.apk",
+      "bytes": 22685193,
+      "sha256": "aabdc0ac4293b38bc5fec56b0f1801b988dd635c7d3c233947ab97a7fe9a4956"
+    },
+    {
+      "name": "MoeGameCollection-1.0.0-windows-x64.zip",
+      "bytes": 175210442,
+      "sha256": "b6b49487c13785a4ebfb228048c25ceccd235b35c6380dd7cc3926cef77a71f0"
+    }
+  ],
+  "checks": {
+    "androidSiteMatches": true,
+    "androidSignature": "v2 and v3 verified by apksigner",
+    "windowsPE": "AMD64",
+    "windowsZipCRC": true,
+    "windowsPackages": 12,
+    "windowsAssets": 108
+  },
+  "limitations": [
+    "Windows EXE not executed on a Windows host; archive, PE and content checks completed.",
+    "Windows executable has no Authenticode certificate."
+  ]
+}

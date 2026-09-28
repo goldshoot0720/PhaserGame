@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Result screen: line score, winner, replay.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, drawStadium, drawChar, type Frames } from '../art.js';
@@ -33,7 +34,7 @@ export class GameOver extends Scene {
   override update(dt: number): void {
     super.update(dt);
     this.t += dt;
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     const down = !!p?.isDown;
     if (this.input.keys.again.pressed || (down && !this.wasDown && inside(p, this.again))) this.gotoPlay();
     else if (this.input.keys.menu.pressed || (down && !this.wasDown && inside(p, this.menu))) this.gotoTitle();
@@ -77,7 +78,7 @@ export class GameOver extends Scene {
     });
     this.again = { x: cx - 250, y: 640, w: 230, h: 62 };
     this.menu = { x: cx + 20, y: 640, w: 230, h: 62 };
-    button(d, g, this.again, '再比一場', this.input.pointer, { color: '#d9452b', hover: '#ff6a47', size: 28 });
-    button(d, g, this.menu, '回到標題', this.input.pointer, { size: 28 });
+    button(d, g, this.again, '再比一場', mobilePointer(this.input.pointer), { color: '#d9452b', hover: '#ff6a47', size: 28 });
+    button(d, g, this.menu, '回到標題', mobilePointer(this.input.pointer), { size: 28 });
   }
 }

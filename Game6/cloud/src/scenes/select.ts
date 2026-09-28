@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Pick four units (the other four are the enemy) and a map.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, cover, drawChar, session, type Frames } from '../art.js';
@@ -19,7 +20,7 @@ export class Select extends Scene {
     super.update(dt);
     this.t += dt;
     if (this.input.keys.back.pressed) { this.gotoTitle(); return; }
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     this.hover = this.cards.findIndex((r) => inside(p, r));
     const ready = this.picks.length === 4;
     if (this.click.poll(p)) {
@@ -59,9 +60,9 @@ export class Select extends Scene {
     });
     label(d, g, '戰場：', cx - 330, H - 120, { size: 22, color: '#ffffff' }, 1, 0.5);
     this.mapBtns = MAPS.map((_, i) => ({ x: cx - 320 + i * 220, y: H - 146, w: 200, h: 52 }));
-    MAPS.forEach((m, i) => button(d, g, this.mapBtns[i], m.name, this.input.pointer, { selected: session.map === i, size: 22 }));
+    MAPS.forEach((m, i) => button(d, g, this.mapBtns[i], m.name, mobilePointer(this.input.pointer), { selected: session.map === i, size: 22 }));
     this.go = { x: cx - 150, y: H - 78, w: 300, h: 58 };
     const ready = this.picks.length === 4;
-    button(d, g, this.go, ready ? '出擊！' : '請選滿 4 人', this.input.pointer, { color: ready ? '#b8742a' : '#555a70', hover: ready ? '#e0923a' : '#555a70', size: 28 });
+    button(d, g, this.go, ready ? '出擊！' : '請選滿 4 人', mobilePointer(this.input.pointer), { color: ready ? '#b8742a' : '#555a70', hover: ready ? '#e0923a' : '#555a70', size: 28 });
   }
 }

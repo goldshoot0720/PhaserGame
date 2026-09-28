@@ -21,16 +21,36 @@
 | `Game11` | 萌友戰機 2026～2027 | 縱向街機射擊 | [遊玩](https://phaser.io/agent/local/fvhg1h7jEMG) |
 | `Game12` | 萌友水球大作戰 | 爆爆王式水球對戰 | [遊玩](https://phaser.io/agent/local/eVdsiqEdzeb) |
 
-## 本機版（Vite）
+## 完整離線合集與手機版
 
-以下目錄另有可在本機執行的版本：
+12 款完整遊戲、美術、音樂、24 份指南與攻略已收錄。首頁可搜尋及按類型篩選，遊戲播放器提供暫停、靜音、重玩、全螢幕與攻略。
 
-| 目錄 | 遊戲 | 執行方式 |
-| --- | --- | --- |
-| `Game3` | 卡丁車 | `npm ci && npm run dev` |
-| `Game4/guide` | 洛克英雄攻略網站 | 以瀏覽器開啟 `index.html` |
-| `Game5` | 格鬥王 | `npm ci && npm run dev` |
-| `Game6` | 戰棋 | 在 `Game6` 執行 `python3 -m http.server 8766` |
-| `Game12` | 萌友水球大作戰 | `npm ci && npm run dev` |
+```sh
+npm ci
+npm run dev
+```
 
-其餘遊戲的本機版本仍在補齊中，將在完成後另行提交；上方線上版已可完整遊玩。
+開啟終端顯示的網址（預設 http://127.0.0.1:8787）。正式遊戲包位於 `Game1–Game12/complete`，保留 Phaser AE 引擎授權；素材位於 `shared/media`。請透過 HTTP 伺服器開啟，不要直接雙擊 HTML。
+
+手機會顯示方向鍵和各遊戲專用操作，可同時移動與攻擊。射擊大亂鬥另有拖曳瞄準區；戰棋、卡牌與桌遊可直接點畫面。支援橫直向、安全邊界、切到背景自動暫停及快速點按。橫向遊玩可獲得較大的遊戲畫面。
+
+## 下載
+
+[GitHub Releases](https://github.com/goldshoot0720/PhaserGame/releases) 提供：
+
+- Android 8.0 以上 APK，內建全部遊戲與素材，可離線遊玩。
+- Windows x64 ZIP，完整解壓後執行 `MoeGameCollection.exe`，請保留同目錄所有檔案。Windows 執行檔尚未進行 Authenticode 簽章。
+
+建置需求、APK 簽章與重建指令見 [packaging/README.md](packaging/README.md)。
+
+## 原始碼與驗證
+
+- `GameN/cloud/src`：Phaser Game Agent 原始碼與每款遊戲的規則測試。
+- `shared/mobile-cloud.ts`：共用手機控制；`npm run sync:mobile` 同步至各雲端原始碼。
+- `shared/packages.json`：完整遊戲包來源與 SHA-256，可追溯發佈版本。
+- `npm run check`：12 款素材、遊戲包、指南完整性，以及本機規則與輸入測試。
+- `npm run verify:mobile`：啟動伺服器後，以 Chrome 實測 12 款手機橫直向、進入遊戲、多點觸控、按鍵釋放、暫停與靜音；預設測試網址為 http://127.0.0.1:8790，可用 `TEST_URL` 指定。
+- `npm run stats`：更新原始碼行數報告。
+- `reports`：雲端規則、手機互動與發行檢查結果。
+
+`local.html` 另附 Game2、Game7、Game11 的 Canvas 2D 本機備用實作（`npm run build:local`）；合集與發行包預設使用完整 Phaser 版本。部分遊戲資料夾也保留早期獨立版本供開發參考。

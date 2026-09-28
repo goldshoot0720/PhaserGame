@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Stage select: seven bosses around the hero; the fortress unlocks when all are beaten.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadMenu, frames, cover, portrait } from '../common.js';
@@ -44,7 +45,7 @@ export class Stages extends Scene {
     if (k.ok.pressed) this.go(this.keys()[this.i]);
     if (k.back.pressed) this.game.go('select');
     if (k.reset.pressed) { Progress.reset(run.hero); this.note = '進度已重置'; }
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     if (this.click.poll(p)) this.slots.forEach((s, j) => { if (inside(p, s.r)) { if (this.i === j) this.go(s.key); else this.i = j; } });
   }
   override draw(d: Draw): void {

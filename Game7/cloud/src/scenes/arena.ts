@@ -1,3 +1,5 @@
+import { mobilePointer } from '../mobile.js';
+import { mobileAim } from '../mobile.js';
 // The match: 8-player free-for-all in a top-down arena. The player aims with the mouse.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { label, panel, clamp } from '../ui.js';
@@ -172,8 +174,9 @@ export class Arena extends Scene {
     const n = Math.hypot(dx, dy) || 1;
     dx /= n; dy /= n;
     p.vx = dx * SPEED; p.vy = dy * SPEED;
-    const ptr = this.input.pointer;
-    if (ptr) {
+    const ptr = mobilePointer(this.input.pointer);
+    if (mobileAim.active) p.aim = Math.atan2(mobileAim.y, mobileAim.x);
+    else if (ptr) {
       // Pointer is in world units of the view; add the camera offset if the engine reports view-relative coordinates.
       const wx = ptr.x, wy = ptr.y;
       p.aim = Math.atan2(wy - p.y, wx - p.x);

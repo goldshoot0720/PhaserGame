@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // The board: four players take turns rolling, moving, buying, building and paying tolls.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { label, panel, button, inside, Clicker, type Rect } from '../ui.js';
@@ -264,7 +265,7 @@ export class Play extends Scene {
     this.timer -= dt;
     for (const fl of this.floats) { fl.t -= dt; fl.y -= 28 * dt; }
     this.floats = this.floats.filter((fl) => fl.t > 0);
-    const k = this.input.keys, ptr = this.input.pointer;
+    const k = this.input.keys, ptr = mobilePointer(this.input.pointer);
     if (k.quit.pressed) { this.gotoTitle(); return; }
     let action: string | null = null;
     if (this.click.poll(ptr)) for (const b of this.btns) if (inside(ptr, b.r)) action = b.id;
@@ -417,7 +418,7 @@ export class Play extends Scene {
   }
 
   private drawPanel(d: Draw, px: number, pw: number): void {
-    const g = this.game, H = this.height, ptr = this.input.pointer;
+    const g = this.game, H = this.height, ptr = mobilePointer(this.input.pointer);
     this.btns = [];
     let y = this.y0;
     this.ps.forEach((p, i) => {

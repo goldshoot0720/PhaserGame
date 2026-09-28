@@ -1,0 +1,24 @@
+/* Mobile collection shell; each embedded game owns its touch controls. */
+@media (pointer: coarse), (max-width: 600px) {
+  html { scroll-padding-top: 20px; }
+  body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+  button, .card-links a, .topbar nav a, .guide-tabs a { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  input { min-height: 44px; font-size: 16px !important; }
+  .player-page { height: 100dvh; overflow: hidden; padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+  .player-bar { flex: 0 0 auto; }
+  .player-bar h1 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .player-stage { min-height: 0; flex: 1; }
+  .player-controls { gap: 4px; }
+  .player-controls button { padding: 4px 9px; font-size: 12px; }
+  #game-frame { touch-action: none; }
+  dialog { max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); }
+  #guide-frame { width: 100%; height: 70dvh; }
+  .hero-stats { flex-wrap: wrap; }
+  .topbar { padding-top: max(12px, env(safe-area-inset-top)); }
+}
+@media (pointer: coarse) and (orientation: landscape) and (max-height: 600px) {
+  .player-bar { padding: 0 6px; gap: 5px; min-height: 44px; flex-wrap: nowrap; }
+  .player-bar h1 { display: none; }
+  .player-controls { width: auto; margin-left: auto; }
+  .player-bar > a { font-size: 12px; }
+}

@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // The sortie: a vertical-scrolling arcade shooter across two stages (2026 ocean, 2027 space).
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { label, panel, clamp } from '../ui.js';
@@ -148,7 +149,7 @@ export class Play extends Scene {
     const n = Math.hypot(dx, dy) || 1; dx /= n; dy /= n;
     this.px += dx * sp * dt; this.py += dy * sp * dt;
     // Touch / mouse: drag the ship (it sits a little above the finger).
-    const ptr = this.input.pointer;
+    const ptr = mobilePointer(this.input.pointer);
     if (ptr?.isDown) {
       const tx = ptr.x - this.x0, ty = ptr.y - 70, ddx = tx - this.px, ddy = ty - this.py, d = Math.hypot(ddx, ddy);
       if (d > 2) { const m = Math.min(d, SPEED * 1.3 * dt); this.px += (ddx / d) * m; this.py += (ddy / d) * m; }

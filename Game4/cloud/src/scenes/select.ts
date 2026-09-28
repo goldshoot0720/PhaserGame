@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Hero select: the other seven become bosses.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadMenu, frames, cover, portrait } from '../common.js';
@@ -34,7 +35,7 @@ export class Select extends Scene {
     if (k.up.pressed || k.down.pressed) this.i = (this.i + 4) % 8;
     if (k.ok.pressed) this.pick();
     if (k.back.pressed) this.gotoTitle();
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     if (this.click.poll(p)) this.cards.forEach((r, j) => { if (inside(p, r)) { if (this.i === j) this.pick(); else this.i = j; } });
   }
   override draw(d: Draw): void {

@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Play: catcher's-view at-bats. When the user's team bats they steer a meet cursor
 // and time a swing; when it fields they pick a pitch, aim it and throw.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
@@ -135,7 +136,7 @@ export class Play extends Scene {
     super.update(dt);
     this.t += dt;
     const k = this.input.keys;
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     const down = !!p?.isDown;
     const click = down && !this.wasDown;
     this.wasDown = down;
@@ -369,7 +370,7 @@ export class Play extends Scene {
       ps.forEach((name, i) => {
         const r: Rect = { x: W / 2 - total / 2 + i * (bw + gap), y: H - 74, w: bw, h: 54 };
         this.pitchBtns.push({ name, r });
-        button(d, g, r, `${i + 1} ${name}`, this.input.pointer, { selected: name === this.selPitch, size: 22 });
+        button(d, g, r, `${i + 1} ${name}`, mobilePointer(this.input.pointer), { selected: name === this.selPitch, size: 22 });
       });
       label(d, g, '滑鼠/方向鍵瞄準　數字鍵選球種　點擊好球帶或 Space 投球', W / 2, H - 96, { size: 18, color: '#ffffff', stroke: '#000000', strokeWidth: 4 });
     } else if (this.userBatting && (this.phase === 'ready' || this.phase === 'windup' || this.phase === 'flight')) {

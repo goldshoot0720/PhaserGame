@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Battle: player phase (select → move → act) and animated enemy phase.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, cover, drawChar, session, ART, type Frames } from '../art.js';
@@ -209,7 +210,7 @@ export class Battle extends Scene {
       else if (Math.floor(a.t - dt * 7) !== i) this.sound.play('step');
     }
 
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     this.hover = p ? this.pickTile(p.x, p.y) : null;
     const down = !!p?.isDown;
     const click = down && !this.wasDown;
@@ -319,7 +320,7 @@ export class Battle extends Scene {
     }
     for (const s of this.shots) d.circle(lerp(s.x0, s.x1, s.t), lerp(s.y0, s.y1, s.t) - Math.sin(s.t * Math.PI) * 30, 8, s.color);
     for (const fl of this.floats) label(d, g, fl.text, fl.x, fl.y, { size: 24, color: fl.color, stroke: '#000000', strokeWidth: 5, weight: 900 }, 0.5, 0.5, clamp(fl.t * 2, 0, 1));
-    for (const m of this.menuBtns) button(d, g, m.r, m.text, this.input.pointer, { color: m.enabled ? '#3b6fd8' : '#4a4f5a', hover: m.enabled ? '#5a8cf0' : '#4a4f5a', size: 22 });
+    for (const m of this.menuBtns) button(d, g, m.r, m.text, mobilePointer(this.input.pointer), { color: m.enabled ? '#3b6fd8' : '#4a4f5a', hover: m.enabled ? '#5a8cf0' : '#4a4f5a', size: 22 });
     this.drawPanel(d, W, H);
   }
 
@@ -360,7 +361,7 @@ export class Battle extends Scene {
     const pt = this.b.team('P'), et = this.b.team('E');
     label(d, g, `我方 ${pt.length} 人　敵方 ${et.length} 人`, px + 16, this.by + 420, { size: 20, color: '#ffffff' }, 0, 0.5);
     this.endBtn = { x: px, y: this.by + 450, w: pw, h: 56 };
-    button(d, g, this.endBtn, '結束回合（E）', this.input.pointer, { color: '#b8742a', hover: '#e0923a', size: 24 });
+    button(d, g, this.endBtn, '結束回合（E）', mobilePointer(this.input.pointer), { color: '#b8742a', hover: '#e0923a', size: 24 });
     label(d, g, '森林 +2、山岳 +3、民房 +1 防禦；民房每回合恢復 5 HP', px + 16, this.by + 540, { size: 15, color: '#cccccc', maxWidth: pw - 20 }, 0, 0.5);
     if (this.bannerT > 0) {
       const a = clamp(this.bannerT * 3, 0, 1);

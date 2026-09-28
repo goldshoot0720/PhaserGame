@@ -5,3 +5,10 @@
 **/.vite/
 **/.openai/
 **/.claude/
+.cache/
+reports/screenshots/
+.playwright-mcp/
+release/
+packaging/windows/site/
+*.jks
+*.keystore

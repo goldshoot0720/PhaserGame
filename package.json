@@ -1,0 +1,25 @@
+{
+  "name": "moe-game-collection",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/serve.mjs",
+    "build": "node tools/build-guides.mjs",
+    "stats": "node tools/count-lines.mjs",
+    "check": "node tools/check-collection.mjs",
+    "dev:local": "node tools/serve-local.mjs",
+    "build:local": "node tools/build-local.mjs",
+    "check:local": "node tools/check-local.mjs",
+    "sync:mobile": "node tools/sync-mobile.mjs",
+    "verify:mobile": "node tools/verify-mobile.mjs",
+    "release:stage": "node tools/stage-release.mjs",
+    "release:android": "node tools/stage-release.mjs && python3 tools/build-android.py",
+    "release:windows": "node tools/stage-release.mjs && node tools/stage-windows.mjs && npm run package --prefix packaging/windows"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}

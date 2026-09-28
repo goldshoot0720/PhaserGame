@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Team select: pick 藍鯨隊 or 貓咪隊; the user bats last (home team).
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, drawStadium, drawChar, type Frames } from '../art.js';
@@ -32,7 +33,7 @@ export class Select extends Scene {
     if (k.right.pressed) session.team = 'cat';
     if (k.go.pressed) this.confirm();
     if (k.back.pressed) this.gotoTitle();
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     const down = !!p?.isDown;
     if (down && !this.wasDown) {
       for (const b of this.boxes) if (inside(p, b.r)) { session.team = b.id; this.sound.play({ type: 'square', freq: 660, duration: 0.06, volume: 0.3 }); }
@@ -71,7 +72,7 @@ export class Select extends Scene {
       if (sel) label(d, this.game, '▲ 已選擇 ▲', r.x + r.w / 2, r.y + 490, { size: 22, color: '#ffe066' });
     });
     this.goBtn = { x: cx - 150, y: 660, w: 300, h: 66 };
-    button(d, this.game, this.goBtn, '比賽開始！', this.input.pointer, { color: '#d9452b', hover: '#ff6a47', size: 30 });
+    button(d, this.game, this.goBtn, '比賽開始！', mobilePointer(this.input.pointer), { color: '#d9452b', hover: '#ff6a47', size: 30 });
     label(d, this.game, '← → 選擇　Space 確認　Esc 返回', cx, 748, { size: 18, color: '#cccccc' });
   }
 }

@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Pick a hero — starting balloons / range / speed differ a little.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadMenu, menuFrames, backdrop, spriteB } from '../menu.js';
@@ -28,7 +29,7 @@ export class Select extends Scene {
     if (k.up.pressed || k.down.pressed) this.i = (this.i + 4) % 8;
     if (k.ok.pressed) this.start();
     if (k.back.pressed) this.gotoTitle();
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     if (this.click.poll(p)) {
       this.cards.forEach((r, j) => { if (inside(p, r)) { if (this.i === j) this.start(); else this.i = j; } });
       if (inside(p, this.go)) this.start();
@@ -57,6 +58,6 @@ export class Select extends Scene {
       });
     });
     this.go = { x: cx - 150, y: H - 74, w: 300, h: 58 };
-    button(d, g, this.go, `以 ${HEROES[this.i].name} 參戰！`, this.input.pointer, { color: '#e0567f', hover: '#ff7aa0', size: 26 });
+    button(d, g, this.go, `以 ${HEROES[this.i].name} 參戰！`, mobilePointer(this.input.pointer), { color: '#e0567f', hover: '#ff7aa0', size: 26 });
   }
 }

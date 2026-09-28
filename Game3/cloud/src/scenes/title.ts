@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Title screen.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, drawCentered, drawBottom, cover, type Frames } from '../art.js';
@@ -16,7 +17,7 @@ export class Title extends Scene {
   override update(dt: number): void {
     super.update(dt);
     this.t += dt;
-    if (this.input.keys.start.pressed || this.click.poll(this.input.pointer)) {
+    if (this.input.keys.start.pressed || this.click.poll(mobilePointer(this.input.pointer))) {
       if (!session.musicOn) { this.sound.music(ART.music, { loop: true, volume: 0.3, fadeIn: 1 }); session.musicOn = true; }
       this.sound.play({ notes: 'C5 E5 G5 C6', step: 0.06, type: 'square', volume: 0.35 });
       this.game.go('select');

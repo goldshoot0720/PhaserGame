@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Pick a racer, then a track.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, drawBottom, cover, type Frames } from '../art.js';
@@ -41,7 +42,7 @@ export class Select extends Scene {
     if (this.step === 'racer') this.ri = i; else this.ti = i;
     if (k.ok.pressed) this.confirm();
     if (k.back.pressed) { if (this.step === 'track') this.step = 'racer'; else this.gotoTitle(); }
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     if (this.click.poll(p)) {
       this.cards.forEach((r, j) => { if (inside(p, r)) { if (this.step === 'racer') { if (this.ri === j) this.confirm(); else this.ri = j; } else { if (this.ti === j) this.confirm(); else this.ti = j; } } });
       if (inside(p, this.go)) this.confirm();
@@ -90,7 +91,7 @@ export class Select extends Scene {
       });
     }
     this.go = { x: cx - 150, y: H - 84, w: 300, h: 58 };
-    button(d, g, this.go, this.step === 'racer' ? '決定車手' : '出發！', this.input.pointer, { color: '#d9452b', hover: '#ff6a47', size: 28 });
+    button(d, g, this.go, this.step === 'racer' ? '決定車手' : '出發！', mobilePointer(this.input.pointer), { color: '#d9452b', hover: '#ff6a47', size: 28 });
     label(d, g, '方向鍵選擇　Space 確認　Esc 返回', cx, H - 12, { size: 16, color: '#dddddd' });
   }
 }

@@ -1,3 +1,4 @@
+import { mobilePointer } from '../mobile.js';
 // Title: stadium, logo, Chinese title, start.
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, drawStadium, drawCentered, drawChar, type Frames } from '../art.js';
@@ -26,7 +27,7 @@ export class Title extends Scene {
   override update(dt: number): void {
     super.update(dt);
     this.t += dt;
-    const p = this.input.pointer;
+    const p = mobilePointer(this.input.pointer);
     const down = !!p?.isDown;
     if (this.input.keys.start.pressed || (down && !this.wasDown)) this.start();
     this.wasDown = down;
