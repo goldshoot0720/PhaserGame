@@ -1,0 +1,1 @@
+First release of 萌友街頭 3x3: pick three of eight chibi ballers and play FIBA-style 3x3 half-court basketball vs a CPU trio — dribble, pass, meter-timed jump shots, steals, blocks, rebounds, 12s shot clock, clear-the-ball rule, first to 21 or 4:00 with sudden-death OT. Generated sunset street-court art, logo and hip-hop chiptune.

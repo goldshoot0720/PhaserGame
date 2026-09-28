@@ -1,0 +1,6 @@
+{
+  "render": "webgpu",
+  "worldHeight": 720,
+  "background": "#123049",
+  "pixelArt": false
+}

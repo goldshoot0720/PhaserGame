@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
+    "strict": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "lib": ["ES2020", "DOM"],
+    "types": ["node"],
+    "skipLibCheck": true
+  },
+  "include": ["src"],
+  "comment": "engine/ holds the prebuilt bundle (imported as .js) + .d.ts types + .ts source for READING only — never compiled here.",
+  "exclude": ["engine", "dist", "node_modules"]
+}

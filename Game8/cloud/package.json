@@ -1,0 +1,21 @@
+{
+  "name": "game",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "verify": "tsc && node dist/verify.js",
+    "shot": "tsc && node shot.mjs",
+    "bundle": "node build.mjs",
+    "report": "node report.mjs",
+    "serve": "node serve.mjs",
+    "start": "tsc && node serve.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "esbuild": "^0.28.1",
+    "typescript": "^7.0.2",
+    "playwright": "^1.62.1"
+  }
+}

@@ -1,0 +1,1 @@
+Full rebuild of 戰機 2026～2027: generated jets, enemies, battleship & mothership bosses, ocean/space backgrounds, logo and music; 8 pilots with 8 shot types (spread, piercing laser, homing, vulcan, options, orbiting pages, flame, front+rear), power Lv1-4, bombs, focus mode, two stages with midboss + 3-phase bosses, extends and hi-score. 20 rule tests + headless boss play-test.

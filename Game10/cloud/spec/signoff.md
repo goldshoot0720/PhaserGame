@@ -1,0 +1,1 @@
+Weapon resupply: parachute airdrops now include ammo boxes (+1 triple, heavy and special shell, capped) alongside heart barrels, drops are more frequent (45%/turn), and every tank gets automatic resupply (triple shell every 3rd own turn, heavy every 5th). Shells that blast a crate also collect it.

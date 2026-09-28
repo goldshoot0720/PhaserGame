@@ -1,0 +1,1 @@
+First release of 萌友棒球對決: a 3-inning catcher's-view baseball game (藍鯨隊 vs 貓咪隊) with team select, meet-cursor batting with swing timing, pitch selection/aiming with breaking balls, CPU batter & pitcher, full count/bases/score rules, and a line-score result screen. Art, logo and music generated for the game.

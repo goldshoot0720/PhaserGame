@@ -1,0 +1,1 @@
+First release of 萌友格鬥王: an arcade 2D fighter with eight chibi fighters (ported frame data from the local Game5) — light/heavy punches and kicks, crouch/air normals, chain cancels, motion-input specials and meter supers, high/low/overhead blocking, parry counter, projectiles, best-of-3 rounds with a 99s timer, 1P vs CPU (3 difficulties) or 2P local versus, three generated stages.

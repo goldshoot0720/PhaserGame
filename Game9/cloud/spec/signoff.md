@@ -1,0 +1,1 @@
+Tokens now line up along the bottom of each space so street names stay readable; play-tested buying, AI turns and tolls headlessly.

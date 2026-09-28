@@ -1,0 +1,1 @@
+First release of 萌友戰棋・八方對決: a Fire-Emblem-style 4v4 turn-based tactics game (rules ported from the local Game6) — pick four heroes, fight the other four on three maps with terrain costs/defence, ranged and magic attacks, counters, crits, healing, house recovery and an AI enemy army; generated terrain tiles, war-room backdrop, logo and music.
