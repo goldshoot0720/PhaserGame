@@ -71,13 +71,19 @@ export class Match {
  */
 export function shotChance(dist: number, three: boolean, skill: number, timing: number, contest: number): number {
   let base: number;
-  if (dist < 60) base = 0.72;            // layup range
+  if (dist < 60) base = 0.76;            // layup range
   else if (!three) base = 0.62 - (dist - 60) / 600;
   else base = 0.44 - Math.max(0, dist - 240) / 500;
   const sk = (skill - 5) * 0.035;
   const tm = (timing - 0.6) * 0.45;
-  const p = (base + sk + tm) * (1 - contest * 0.45);
+  // A hand in the face hurts a jumper more than a layup at the rim.
+  const p = (base + sk + tm) * (1 - contest * (three ? 0.45 : 0.32));
   return Math.max(0.03, Math.min(0.95, p));
+}
+
+/** Chance an airborne defender in range swats the shot (blocker / shooter jump ratings 1-10). */
+export function blockChance(blockerJump: number, shooterJump: number): number {
+  return Math.max(0.05, Math.min(0.4, 0.12 + blockerJump * 0.025 - (shooterJump - 5) * 0.015));
 }
 
 /** Meter quality: 1 at the sweet window, falling off either side. */

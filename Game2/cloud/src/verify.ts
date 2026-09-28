@@ -1,7 +1,7 @@
 // Acceptance tests — run headless by `npm run verify`.
 import { readFileSync } from 'node:fs';
 import { BACKGROUND, PIXEL_ART, CONTAINER, GAME_OPTIONS } from './config.js';
-import { Match, shotChance, meterQuality } from './rules.js';
+import { Match, shotChance, meterQuality, blockChance } from './rules.js';
 import { isThree, hoopDist, clampToCourt, HOOP, TOP_OF_KEY, BOTTOM_Y } from './court.js';
 import { BALLERS, WIN_SCORE, SHOT_CLOCK, METER_SWEET } from './data.js';
 
@@ -49,6 +49,8 @@ check('game.json agrees on pixel art', declared.pixelArt === PIXEL_ART);
   check('contest lowers the odds', shotChance(150, false, 7, 0.8, 1) < shotChance(150, false, 7, 0.8, 0));
   check('good timing beats bad timing', shotChance(200, false, 7, 1, 0) > shotChance(200, false, 7, 0, 0));
   check('chance stays within 3%..95%', shotChance(10, false, 10, 1, 0) <= 0.95 && shotChance(900, true, 1, 0, 1) >= 0.03);
+  check('contested layup still beats an open long two', shotChance(40, false, 7, 0.8, 1) > shotChance(210, false, 7, 0.8, 0) * 0.9);
+  check('block chance is capped well below a coin flip', blockChance(10, 1) <= 0.4 && blockChance(6, 6) < 0.3);
   check('meter sweet spot is perfect', meterQuality((METER_SWEET[0] + METER_SWEET[1]) / 2, METER_SWEET) === 1);
   check('meter far off is poor', meterQuality(0.2, METER_SWEET) < 0.2);
 }

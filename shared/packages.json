@@ -1,18 +1,18 @@
 [
   {
     "id": 1,
-    "source": "https://phaser.games/bundle/9rwJkwrCkfc?v=124039935ef7d3b1",
-    "originalSha256": "124039935ef7d3b1bbbaced5ffb38309b7d79d850c3f03e8c1aebf7ef9c08b9b",
-    "localSha256": "f6e97a768dabc236019bb87645b889c8023001a0197a501d5835054c39fd0487",
-    "bytes": 1137595,
+    "source": "https://phaser.games/bundle/9rwJkwrCkfc?v=8afea1bf85424741",
+    "originalSha256": "8afea1bf8542474130b1e5b3e7e5fc877148d6bd2a74642dbe4cbbe92404a15f",
+    "localSha256": "dfc440d77ef93eb3295e69c9c4304e15062da1e363856308e8249863deba98a4",
+    "bytes": 1137892,
     "change": "Game asset origin only; complete game and engine license retained."
   },
   {
     "id": 2,
-    "source": "https://phaser.games/bundle/qShMT5e7fmJ?v=1ee4e210415b7ffe",
-    "originalSha256": "1ee4e210415b7ffec635c54fe08eabbd7b511dd18da0f2f0dbe44afa4136d4d9",
-    "localSha256": "9e30b8ed07c310755eb4e205ca7e481753f333b35cfbb01194a1b7ac39894bf0",
-    "bytes": 1136510,
+    "source": "https://phaser.games/bundle/qShMT5e7fmJ?v=e2b81d5a510b1679",
+    "originalSha256": "e2b81d5a510b16797277276501cc0de9e7b87954a35e7f28c4f865f330a6b0e8",
+    "localSha256": "da4a6958801586eaee4d98e6648610388ec57eae0e72fc893ed3c459a9d79b8e",
+    "bytes": 1136671,
     "change": "Game asset origin only; complete game and engine license retained."
   },
   {

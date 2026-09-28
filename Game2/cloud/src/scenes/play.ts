@@ -3,9 +3,9 @@
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, drawCourt, drawChar, ellipse, ellipseRing, type Frames, type View } from '../art.js';
 import { label, panel, clamp, lerp } from '../ui.js';
-import { baller, RUN_SPEED, DEPTH_FACTOR, PASS_SPEED, STEAL_RANGE, BLOCK_RANGE, METER_TIME, METER_SWEET, ART, type Baller } from '../data.js';
+import { baller, RUN_SPEED, DEPTH_FACTOR, PASS_SPEED, STEAL_RANGE, BLOCK_RANGE, BLOCK_MIN_Z, CONTEST_RANGE, METER_TIME, METER_SWEET, ART, type Baller } from '../data.js';
 import { HOOP, RIM_HEIGHT, TOP_OF_KEY, clampToCourt, isThree, hoopDist, floorDist, depthScale, halfWidth, TOP_Y, BOTTOM_Y } from '../court.js';
-import { Match, shotChance, meterQuality, type Side } from '../rules.js';
+import { Match, shotChance, meterQuality, blockChance, type Side } from '../rules.js';
 import { session } from '../session.js';
 
 interface P {
@@ -125,8 +125,8 @@ export class Play extends Scene {
     let blocker: P | null = null;
     for (const d of this.team((1 - p.side) as Side)) {
       const fd = floorDist(d, p);
-      contest = Math.max(contest, clamp(1 - fd / 90, 0, 1) * (d.z > 8 ? 1.25 : 1));
-      if (d.z > 12 && fd < BLOCK_RANGE && !blocker) blocker = d;
+      contest = Math.max(contest, clamp(1 - fd / CONTEST_RANGE, 0, 1) * (d.z > 8 ? 1.2 : 1));
+      if (d.z > BLOCK_MIN_Z && fd < BLOCK_RANGE && !blocker) blocker = d;
     }
     p.z = 0; p.vz = 260 + p.b.jump * 12; // jump shot
     b.mode = 'shot'; b.holder = null; b.shooter = p; b.three = three;
@@ -134,7 +134,7 @@ export class Play extends Scene {
     b.x = p.x; b.y = p.y; b.z = 70; b.t = 0;
     b.dur = 0.55 + dist / 900;
     b.blocked = false;
-    if (blocker && rng() < 0.3 + blocker.b.jump * 0.04) {
+    if (blocker && rng() < blockChance(blocker.b.jump, p.b.jump)) {
       b.blocked = true;
       b.dur = 0.18;
     }
@@ -354,7 +354,10 @@ export class Play extends Scene {
     this.moveToward(p, tx, ty, dt, 1.0);
     const h = this.holder();
     if (h === opp && think) {
-      if (h.windup > 0 || this.meter >= 0) { if (floorDist(p, h) < BLOCK_RANGE + 10 && rng() < 0.5) this.jump(p); }
+      // React to the release rather than leaping at the start of the gather, so a
+      // defender who bites early is back on the floor when the ball goes up.
+      const nearRelease = (h.windup > 0 && h.windup < 0.2) || this.meter >= 0.6;
+      if (h.windup > 0 || this.meter >= 0) { if (nearRelease && floorDist(p, h) < BLOCK_RANGE + 10 && rng() < 0.3 + p.b.jump * 0.02) this.jump(p); }
       else if (floorDist(p, h) < STEAL_RANGE && rng() < 0.05 + p.b.defense * 0.006) this.trySteal(p);
     }
     if (b.mode === 'shot' && b.shooter === opp && b.t < 0.15 && floorDist(p, opp) < BLOCK_RANGE && think) this.jump(p);

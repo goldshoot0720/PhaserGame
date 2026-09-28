@@ -27,7 +27,9 @@ Role: A single-player 3-on-3 street basketball game on one half court.
 | SHOT_CLOCK | 12 s | |
 | RUN_SPEED | 190 px/s @ speed 5 | depth axis ×0.62 |
 | PASS_SPEED | 620 px/s | |
-| STEAL_RANGE / BLOCK_RANGE | 34 / 44 px | |
+| STEAL_RANGE / BLOCK_RANGE | 34 / 38 px | blocker must be ≥20 px up at release |
+| block chance | 0.12 + jump×0.025 − (shooter jump−5)×0.015, 5–40% | defenders jump only near the release |
+| contest | within 70 px; −45% on threes, −32% inside | layups survive a hand in the face |
 | METER_TIME | 0.9 s | sweet window 0.78–0.92 |
 
 ## Controllers

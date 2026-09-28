@@ -4,9 +4,9 @@ import { mobilePointer } from '../mobile.js';
 import { Scene, type Draw, type Preload } from '../../engine/webgpu.js';
 import { preloadArt, registerArt, drawStadium, drawChar, type Frames, type Field } from '../art.js';
 import { label, panel, button, clamp, lerp, inside, type Rect } from '../ui.js';
-import { PITCH_TYPES, ZONE_W, ZONE_H, CURSOR_SPEED, type PitchName } from '../data.js';
+import { PITCH_TYPES, ZONE_W, ZONE_H, CURSOR_SPEED, SWING_WINDOW, type PitchName } from '../data.js';
 import { GameState, OUTCOME_TEXT, HIT_BASES, type PitchOutcome } from '../rules.js';
-import { makePitch, pitchPos, resolveSwing, cpuBat, cpuPitch, inZone, type Pitch } from '../sim.js';
+import { makePitch, pitchPos, resolveSwing, cpuBat, cpuPitch, inZone, meetRadius, type Pitch } from '../sim.js';
 import { session } from '../session.js';
 
 type Phase = 'ready' | 'aim' | 'windup' | 'flight' | 'result' | 'half';
@@ -182,8 +182,8 @@ export class Play extends Scene {
         break;
       }
       case 'windup':
+        // Presses before the ball leaves the hand are ignored rather than burning the swing.
         this.timer -= dt;
-        if (this.userBatting && (k.act.pressed || click)) this.swing(-this.timer);
         if (this.timer <= 0) { this.phase = 'flight'; this.sound.play('whoosh'); }
         break;
       case 'flight': {
@@ -191,11 +191,11 @@ export class Play extends Scene {
         const pt = this.pitch!;
         if (this.userBatting) {
           if (!this.swung && (k.act.pressed || click)) this.swing(this.flightT);
-          if (this.swung && this.flightT >= pt.time && Math.abs(this.swingAt - pt.time) <= 0.11) {
+          if (this.swung && this.flightT >= pt.time && Math.abs(this.swingAt - pt.time) <= SWING_WINDOW) {
             // Swing arrived in the timing window: resolve contact at the plate.
             const dist = Math.hypot(this.cur.x - pt.endX, this.cur.y - pt.endY);
             this.finishPitch(resolveSwing(this.gs.batter, this.swingAt - pt.time, dist, rng));
-          } else if (this.flightT >= pt.time + 0.12) {
+          } else if (this.flightT >= pt.time + SWING_WINDOW + 0.01) {
             this.finishPitch(this.swung ? 'strike' : inZone(pt.endX, pt.endY) ? 'strike' : 'ball');
           }
         } else {
@@ -280,6 +280,12 @@ export class Play extends Scene {
       const e = Math.pow(tt, 1.35);
       const x = lerp(rel.x, end.x, e), y = lerp(rel.y, end.y, e);
       const r = lerp(3, 13, Math.min(e, 1.1));
+      // Ball shadow on the strike zone: where the pitch is heading, sharpening as it arrives.
+      if (tt <= 1) {
+        const sh = this.zoneToWorld(zp.x, zp.y);
+        d.circle(sh.x, sh.y, 9, '#000000', 0.15 + 0.35 * tt);
+        d.ring(sh.x, sh.y, 9, 2, PITCH_TYPES[pt.type].color, 0.25 + 0.5 * tt);
+      }
       d.circle(x + 3, y + 5, r, '#00000044');
       d.circle(x, y, r, '#ffffff');
       d.ring(x, y, r, 1.5, PITCH_TYPES[pt.type].color, 0.9);
@@ -302,7 +308,7 @@ export class Play extends Scene {
     // Cursor: meet circle (batting) or aim reticle (pitching).
     const cw = this.zoneToWorld(this.cur.x, this.cur.y);
     if (this.userBatting && this.phase !== 'half') {
-      const rr = ((0.35 + gs.batter.meet / 220) * ZONE_W) / 2;
+      const rr = (meetRadius(gs.batter) * ZONE_W) / 2;
       d.circle(cw.x, cw.y, rr, '#ffe066', 0.22);
       d.ring(cw.x, cw.y, rr, 3, '#ffcc00', 0.95);
       d.circle(cw.x, cw.y, 4, '#ff3300');

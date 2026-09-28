@@ -12,7 +12,7 @@ Role: A single-player Power-Pro-style baseball match between two 4-player chibi 
 ## Invariants
 - 3 strikes = out, 4 balls = walk, foul never makes the 3rd strike, 3 outs switch sides.
 - User's team bats last (home); walk-off ends the game; up to 3 extra innings then a tie.
-- Batting: a meet circle (size from contact) + swing timing window ±0.11 s decide contact.
+- Batting: a meet circle (size from contact) + swing timing window ±0.17 s decide contact; a ball shadow on the zone shows where the pitch is heading. Presses during the windup are ignored.
 - Pitching: each pitcher owns 2–4 pitch types with distinct break and speed.
 
 ## Blocks Used
@@ -28,9 +28,10 @@ Systems:
 |---|---|---|
 | INNINGS | 3 | regulation innings |
 | ZONE_W × ZONE_H | 120 × 140 | strike zone, world units |
-| timing window | ±0.11 s | swing contact window |
-| meet radius | 0.35 + meet/220 zone units | cursor size |
-| PITCH_TIME_BASE | 0.62 s @150 km/h | flight time scales with speed |
+| SWING_WINDOW | ±0.17 s | swing contact window |
+| meet radius | 0.5 + meet/180 zone units | cursor size |
+| CPU batting | whiff 0.16 + difficulty×0.22 − meet×0.12; 60% of would-be hits fall in | keeps the CPU from hitting everything |
+| PITCH_TIME_BASE | 0.78 s @150 km/h | flight time scales with speed |
 | CURSOR_SPEED | 520 u/s | keyboard cursor |
 | control error | (1-control/100)×0.55 | pitch scatter |
 

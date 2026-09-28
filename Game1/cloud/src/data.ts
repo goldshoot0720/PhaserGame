@@ -89,4 +89,5 @@ export const ZONE_W = 120;           // strike zone width (world units)
 export const ZONE_H = 140;           // strike zone height
 export const MEET_R = 34;            // batting cursor radius (scaled by meet)
 export const CURSOR_SPEED = 520;     // batting / aiming cursor speed (units/s)
-export const PITCH_TIME_BASE = 0.62; // seconds for a 150 km/h pitch to reach the plate
+export const PITCH_TIME_BASE = 0.78; // seconds for a 150 km/h pitch to reach the plate
+export const SWING_WINDOW = 0.17;    // ± seconds a swing can be off and still make contact

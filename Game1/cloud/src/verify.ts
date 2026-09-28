@@ -2,7 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { BACKGROUND, PIXEL_ART, CONTAINER, GAME_OPTIONS } from './config.js';
 import { GameState } from './rules.js';
-import { TEAMS, PLAYERS, PITCH_TYPES, INNINGS } from './data.js';
+import { TEAMS, PLAYERS, PITCH_TYPES, INNINGS, SWING_WINDOW } from './data.js';
 import { resolveSwing, cpuBat, makePitch, pitchPos, inZone } from './sim.js';
 
 let pass = 0, fail = 0;
@@ -71,9 +71,20 @@ const seq = (vals: number[]) => { let i = 0; return () => vals[i++ % vals.length
   check('pitch ends where it was aimed (no error at rng 0.5)', Math.abs(end.x) < 1e-9 && Math.abs(end.y) < 1e-9);
   const start = pitchPos(p, 0);
   check('splitter starts high and drops', start.y < end.y - 0.5);
-  check('pitch flight time is sensible', p.time > 0.4 && p.time < 1.2);
+  check('pitch flight time is sensible', p.time > 0.5 && p.time < 1.3);
   check('far-outside pitch is a ball when taken', cpuBat(PLAYERS.glasses, makePitch(PLAYERS.whale, '直球', 3, 3, seq([0.5])), seq([0.99])) === 'ball');
   check('zone test', inZone(0.9, -0.9) && !inZone(1.2, 0));
+  check('swing inside the window still connects', resolveSwing(b, SWING_WINDOW * 0.5, 0, seq([0.9])) !== 'strike');
+  // Balance: the CPU must not turn most balls in play into hits.
+  let inPlay = 0, hits = 0;
+  for (let i = 0; i < 4000; i++) {
+    const pt = makePitch(PLAYERS.whale, PLAYERS.whale.pitches[i % 4], Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random);
+    const o = cpuBat(PLAYERS.calico, pt, Math.random);
+    if (o === 'ball' || o === 'strike' || o === 'foul') continue;
+    inPlay++;
+    if (['single', 'double', 'triple', 'homerun'].includes(o)) hits++;
+  }
+  check('CPU hits safely on under 40% of balls in play', hits / Math.max(1, inPlay) < 0.4);
   check('every team has 4 players & a pitcher with pitches', Object.values(TEAMS).every((t) => t.lineup.length === 4 && PLAYERS[t.pitcher].pitches.every((n) => !!PITCH_TYPES[n])));
 }
 
