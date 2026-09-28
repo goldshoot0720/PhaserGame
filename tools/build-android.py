@@ -51,7 +51,7 @@ if not keystore.exists():
         '-keypass:env', 'MOE_SIGNING_PASSWORD', '-alias', 'moe-release', '-keyalg', 'RSA', '-keysize', '3072',
         '-validity', '10000', '-dname', 'CN=Moe Game Collection, OU=Games, O=goldshoot0720, C=TW')
     keystore.chmod(0o600)
-output = root / 'release/MoeGameCollection-1.0.1-android.apk'
+output = root / 'release/MoeGameCollection-1.0.2-android.apk'
 run(tools / 'apksigner', 'sign', '--ks', keystore, '--ks-key-alias', 'moe-release',
     '--ks-pass', 'env:MOE_SIGNING_PASSWORD', '--key-pass', 'env:MOE_SIGNING_PASSWORD', '--out', output, aligned)
 run(tools / 'apksigner', 'verify', '--verbose', output)

@@ -20,6 +20,7 @@ Components:
 - custom `rules.GameState` — count/outs/bases/score/innings
 - custom `sim` — pitch flight + break, swing resolution, CPU batter & pitcher
 - custom `ui` — cached unicode text, buttons, panels
+- custom `batter` — batting rig: each cast sprite's hanging forearms/hands are erased on a canvas at runtime (colour-keyed where they overlap hair/skirt) and replaced by two-bone arms, gloves and a bat; the swing follows 蓄力 (load) → 引棒 (hands lead, barrel lags) → level contact aimed at the ball → extension → follow-through over the shoulder
 Systems:
 - engine scenes, fx particles, camera shake, synth SFX, music
 
@@ -36,7 +37,7 @@ Systems:
 | control error | (1-control/100)×0.55 | pitch scatter |
 
 ## Controllers
-- Batting: mouse or arrows/WASD move the meet circle; click or Space swings.
+- Batting: the meet circle tracks the pitch automatically (chasing its projected crossing point, so late breakers leave some error); click or Space swings — only timing is on the player.
 - Pitching: 1–4 or buttons choose the pitch; mouse/arrows aim; click in the field or Space throws.
 
 ## Wiring

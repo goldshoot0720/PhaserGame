@@ -1,15 +1,15 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "artifacts": [
     {
-      "name": "MoeGameCollection-1.0.1-android.apk",
-      "bytes": 22685193,
-      "sha256": "9ec5b24a41a5003b6ea4f3435252f4eb5278f632cc1072e873d997c2d5cfe222"
+      "name": "MoeGameCollection-1.0.2-android.apk",
+      "bytes": 22693468,
+      "sha256": "29ba64ecbba0bfd3b8a5997ca499fd1daf09979e69c9a1bd40bd229ec44ef81a"
     },
     {
-      "name": "MoeGameCollection-1.0.1-windows-x64.zip",
-      "bytes": 175210575,
-      "sha256": "00ee054b982cf09897dc53e40c88e723c804b8b892a29cc3fdcc7c999fe61772"
+      "name": "MoeGameCollection-1.0.2-windows-x64.zip",
+      "bytes": 175219394,
+      "sha256": "9e0ad5a518da27c29cef3623b78a0783f0ea759caace5ead5a64d133108b74b5"
     }
   ],
   "checks": {

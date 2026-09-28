@@ -8,6 +8,7 @@ import { PITCH_TYPES, ZONE_W, ZONE_H, CURSOR_SPEED, SWING_WINDOW, type PitchName
 import { GameState, OUTCOME_TEXT, HIT_BASES, type PitchOutcome } from '../rules.js';
 import { makePitch, pitchPos, resolveSwing, cpuBat, cpuPitch, inZone, meetRadius, type Pitch } from '../sim.js';
 import { session } from '../session.js';
+import { prepareBatters, batterPose, drawBatter, SWING_CONTACT } from '../batter.js';
 
 type Phase = 'ready' | 'aim' | 'windup' | 'flight' | 'result' | 'half';
 
@@ -44,6 +45,7 @@ export class Play extends Scene {
 
   override setup(): void {
     this.f = registerArt(this.game);
+    prepareBatters(this.game);
     this.gs = GameState.forUser(session.team);
     this.input.bind({
       act: ['Space', 'Enter'], left: ['ArrowLeft', 'KeyA'], right: ['ArrowRight', 'KeyD'],
@@ -90,6 +92,7 @@ export class Play extends Scene {
     this.swingAnim = -1;
     this.cpuResult = null;
     this.cpuSwingShown = false;
+    this.cur = { x: 0, y: 0 };
     if (this.userBatting) {
       this.phase = 'ready';
       this.timer = 0.9;
@@ -142,8 +145,7 @@ export class Play extends Scene {
     this.wasDown = down;
 
     // Cursor: keyboard or mouse (whichever moved last).
-    const canMove = (this.userBatting && (this.phase === 'ready' || this.phase === 'windup' || (this.phase === 'flight' && !this.swung)))
-      || (!this.userBatting && this.phase === 'aim');
+    const canMove = !this.userBatting && this.phase === 'aim';
     if (canMove) {
       const sp = (CURSOR_SPEED * dt * 2) / ZONE_W;
       if (k.left.held) this.cur.x -= sp;
@@ -159,6 +161,15 @@ export class Play extends Scene {
       this.cur.y = clamp(this.cur.y, -lim, lim);
     }
     if (p) this.lastPtr = { x: p.x, y: p.y };
+    // Batting: the meet circle follows the ball on its own; the player only times the swing.
+    // It chases the pitch's projected crossing point, so late breakers still leave some error.
+    if (this.userBatting && this.phase === 'flight' && this.pitch) {
+      const pt = this.pitch;
+      const aim = pitchPos(pt, clamp(this.flightT / pt.time, 0, 1));
+      const f = 1 - Math.exp(-dt * (9 + this.gs.batter.meet / 10));
+      this.cur.x += (aim.x - this.cur.x) * f;
+      this.cur.y += (aim.y - this.cur.y) * f;
+    }
 
     switch (this.phase) {
       case 'half':
@@ -200,7 +211,7 @@ export class Play extends Scene {
           }
         } else {
           const o = this.cpuResult!;
-          if (this.cpuSwings(o) && !this.cpuSwingShown && this.flightT >= pt.time - 0.06) { this.cpuSwingShown = true; this.swingAnim = 0; }
+          if (this.cpuSwings(o) && !this.cpuSwingShown && this.flightT >= pt.time - SWING_CONTACT) { this.cpuSwingShown = true; this.swingAnim = 0; }
           if (this.flightT >= pt.time) this.finishPitch(o);
         }
         break;
@@ -259,16 +270,10 @@ export class Play extends Scene {
       d.line(zx, zy + (ZONE_H * i) / 3, zx + ZONE_W, zy + (ZONE_H * i) / 3, edge ? 3 : 1, '#ffffff', edge ? 0.8 : 0.3);
     }
 
-    // Batter (stands left of the plate from the catcher's view) and bat.
-    const bx = plate.x - 190, by = plate.y + 70;
-    const sw = this.swingAnim >= 0 ? clamp(this.swingAnim / 0.2, 0, 1) : 0;
-    drawChar(d, this.game, this.f.cast[gs.batter.id], bx, by, 290, { rot: lerp(-0.08, 0.2, sw) });
-    const hands = { x: bx + 44, y: by - 140 };
-    const ang = lerp(-2.2, 0.2, sw);
-    const bl = 160;
-    const tip = { x: hands.x + Math.cos(ang) * bl, y: hands.y + Math.sin(ang) * bl };
-    d.line(hands.x, hands.y, tip.x, tip.y, 12, '#5a3414');
-    d.line(hands.x + Math.cos(ang) * 40, hands.y + Math.sin(ang) * 40, tip.x, tip.y, 10, '#e0a96a');
+    // Batter: stands left of the plate from the catcher's view, sized so a level swing crosses the zone.
+    const load = this.phase === 'windup' ? 1 - this.timer / WINDUP : this.phase === 'flight' ? 1 : 0;
+    const aimZ = this.userBatting ? this.cur : { x: this.pitch?.endX ?? 0, y: this.pitch?.endY ?? 0 };
+    drawBatter(d, this.game, this.f.cast[gs.batter.id], gs.batter.id, plate.x - 200, plate.y, 420, batterPose(this.swingAnim, load, this.t), this.zoneToWorld(aimZ.x, aimZ.y), this.swingAnim);
 
     // Pitched ball.
     if (this.pitch && this.phase === 'flight') {
@@ -380,7 +385,7 @@ export class Play extends Scene {
       });
       label(d, g, '滑鼠/方向鍵瞄準　數字鍵選球種　點擊好球帶或 Space 投球', W / 2, H - 96, { size: 18, color: '#ffffff', stroke: '#000000', strokeWidth: 4 });
     } else if (this.userBatting && (this.phase === 'ready' || this.phase === 'windup' || this.phase === 'flight')) {
-      label(d, g, '滑鼠/方向鍵移動打擊圈　點擊或 Space 揮棒', W / 2, H - 30, { size: 20, color: '#ffffff', stroke: '#000000', strokeWidth: 4 });
+      label(d, g, '自動跟球　看準時機點擊或 Space 揮棒', W / 2, H - 30, { size: 20, color: '#ffffff', stroke: '#000000', strokeWidth: 4 });
     }
 
     // Banners.
