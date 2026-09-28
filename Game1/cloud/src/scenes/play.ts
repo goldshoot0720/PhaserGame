@@ -40,6 +40,7 @@ export class Play extends Scene {
   private halfChanged = false;
   private pitchBtns: { name: PitchName; r: Rect }[] = [];
   private swingAnim = -1;
+  private pitchBatterId: string | null = null;
 
   override preload(load: Preload): void { preloadArt(load); }
 
@@ -85,6 +86,7 @@ export class Play extends Scene {
 
   private newAtBatPitch(): void {
     this.pitch = null;
+    this.pitchBatterId = this.gs.batter.id;
     this.outcome = null;
     this.hitBall = null;
     this.swingAt = -1;
@@ -138,6 +140,7 @@ export class Play extends Scene {
   override update(dt: number): void {
     super.update(dt);
     this.t += dt;
+    if (this.swingAnim >= 0) this.swingAnim += dt;
     const k = this.input.keys;
     const p = mobilePointer(this.input.pointer);
     const down = !!p?.isDown;
@@ -202,17 +205,21 @@ export class Play extends Scene {
         const pt = this.pitch!;
         if (this.userBatting) {
           if (!this.swung && (k.act.pressed || click)) this.swing(this.flightT);
-          if (this.swung && this.flightT >= pt.time && Math.abs(this.swingAt - pt.time) <= SWING_WINDOW) {
-            // Swing arrived in the timing window: resolve contact at the plate.
+          if (this.swung && this.flightT >= this.swingAt + SWING_CONTACT && Math.abs(this.swingAt + SWING_CONTACT - pt.time) <= SWING_WINDOW) {
+            // Judge the barrel arrival, then show the contact pose with the crack/ball launch.
+            this.swingAnim = SWING_CONTACT;
             const dist = Math.hypot(this.cur.x - pt.endX, this.cur.y - pt.endY);
-            this.finishPitch(resolveSwing(this.gs.batter, this.swingAt - pt.time, dist, rng));
+            this.finishPitch(resolveSwing(this.gs.batter, this.swingAt + SWING_CONTACT - pt.time, dist, rng));
           } else if (this.flightT >= pt.time + SWING_WINDOW + 0.01) {
             this.finishPitch(this.swung ? 'strike' : inZone(pt.endX, pt.endY) ? 'strike' : 'ball');
           }
         } else {
           const o = this.cpuResult!;
           if (this.cpuSwings(o) && !this.cpuSwingShown && this.flightT >= pt.time - SWING_CONTACT) { this.cpuSwingShown = true; this.swingAnim = 0; }
-          if (this.flightT >= pt.time) this.finishPitch(o);
+          if (this.flightT >= pt.time) {
+            if (this.cpuSwingShown) this.swingAnim = SWING_CONTACT;
+            this.finishPitch(o);
+          }
         }
         break;
       }
@@ -225,7 +232,6 @@ export class Play extends Scene {
         }
         break;
     }
-    if (this.swingAnim >= 0) this.swingAnim += dt;
   }
 
   /** Does the CPU batter visibly swing? Contact always; a 'strike' outside the zone is a chase. */
@@ -273,7 +279,8 @@ export class Play extends Scene {
     // Batter: stands left of the plate from the catcher's view, sized so a level swing crosses the zone.
     const load = this.phase === 'windup' ? 1 - this.timer / WINDUP : this.phase === 'flight' ? 1 : 0;
     const aimZ = this.userBatting ? this.cur : { x: this.pitch?.endX ?? 0, y: this.pitch?.endY ?? 0 };
-    drawBatter(d, this.game, this.f.cast[gs.batter.id], gs.batter.id, plate.x - 200, plate.y, 420, batterPose(this.swingAnim, load, this.t), this.zoneToWorld(aimZ.x, aimZ.y), this.swingAnim);
+    const batterId = this.pitchBatterId ?? gs.batter.id;
+    drawBatter(d, this.game, this.f.cast[batterId], batterId, plate.x - 200, plate.y, 420, batterPose(this.swingAnim, load, this.t), this.zoneToWorld(aimZ.x, aimZ.y), this.swingAnim);
 
     // Pitched ball.
     if (this.pitch && this.phase === 'flight') {

@@ -41,6 +41,9 @@ const GLOVE = '#f5f5f5';
 
 // ── armless sprite frames (built once, asynchronously) ──
 const armless: Record<string, number> = {};
+const bodyParts: Record<string, { upper: number; lower: number }> = {};
+const HIP = 148;
+const OVERLAP = 3;
 let started = false;
 
 /** Kick off building the armless batter frames; drawBatter falls back to the plain sprite until ready. */
@@ -53,7 +56,19 @@ export function prepareBatters(game: Game): void {
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.onload = () => {
-      try { armless[id] = game.assets.frames(eraseArms(img, rig)); } catch { /* keep the plain sprite */ }
+      try {
+        const clean = eraseArms(img, rig);
+        armless[id] = game.assets.frames(clean);
+        const crop = (from: number, to: number): number => {
+          const cv = document.createElement('canvas');
+          cv.width = clean.width;
+          const y0 = Math.round(from * clean.height / ART_H), y1 = Math.round(to * clean.height / ART_H);
+          cv.height = y1 - y0;
+          cv.getContext('2d')!.drawImage(clean, 0, y0, clean.width, cv.height, 0, 0, cv.width, cv.height);
+          return game.assets.frames(cv);
+        };
+        bodyParts[id] = { upper: crop(0, HIP + OVERLAP), lower: crop(HIP - OVERLAP, ART_H) };
+      } catch { /* keep the plain sprite */ }
     };
     img.src = url;
   }
@@ -141,37 +156,49 @@ function eraseArms(img: HTMLImageElement, rig: Rig): HTMLCanvasElement {
 }
 
 // ── the swing ──
-interface Pose {
+export interface Pose {
   /** grip (bottom hand), offset from the shoulders' midpoint, sprite px */
   gx: number; gy: number;
   /** bat direction: yaw around the batter (0 = across the plate, +90° = toward the camera), pitch up */
   yaw: number; pitch: number;
-  /** body shift toward the plate (sprite px) and lean (radians) */
+  /** hip shift toward the plate (sprite px) and torso lean about the hip (radians, + = over the plate) */
   dx: number; rot: number;
+  /** knee flexion (px), projected torso width as the shoulders coil */
+  crouch: number; turn: number;
+  /** bat layer: > 0 in front of the body, < 0 behind it (wrapped over the shoulder) */
+  z: number;
 }
 
-const STANCE: Pose = { gx: -14, gy: 0, yaw: 160, pitch: 62, dx: 0, rot: -0.03 };
-// 蓄力 (load): hands and weight drift back and up while the pitcher winds up.
-const LOAD: Pose = { gx: -20, gy: -5, yaw: 174, pitch: 58, dx: -4, rot: -0.06 };
+// Reference: JOE是棒球「打擊動作解析：蓄力,引棒」 https://www.youtube.com/watch?v=sZ4nUqtBlFo
+// Stance: hands up by the rear shoulder, bat angled up and back where it can be seen.
+const STANCE: Pose = { gx: -20, gy: -8, yaw: 165, pitch: 55, dx: 0, rot: 0.02, crouch: 0, turn: 0.98, z: 1 };
+// 蓄力 is a hip hinge: knees flex, the hips sit back and the chest tips over the plate;
+// the hands drift only slightly back (little shoulder turn) and the barrel tips toward the pitcher.
+const LOAD: Pose = { gx: -24, gy: -10, yaw: 182, pitch: 60, dx: -4, rot: 0.075, crouch: 5, turn: 0.92, z: 1 };
+/** Seconds from the start of the swing until the barrel reaches the plate. */
+export const SWING_CONTACT = 0.12;
 /**
- * Swing keyframes by seconds since the swing started; the bat meets the zone at
- * SWING_CONTACT. 引棒 (bat lag): the hands drive knob-first toward the ball while
- * the barrel stays up and back, then the barrel whips level through contact,
- * extends toward the pitcher and wraps over the front shoulder.
+ * 引棒: the hands drop knob-first toward the ball with the barrel still up behind
+ * them (bat lag), then the barrel flattens through contact, extends toward the
+ * pitcher, and the hands finish high over the front shoulder with the bat wrapped
+ * behind the neck.
  */
 const KEYS: [number, Pose][] = [
   [0, LOAD],
-  [0.04, { gx: -2, gy: 12, yaw: 150, pitch: 46, dx: 2, rot: -0.02 }],
-  [0.065, { gx: 8, gy: 18, yaw: 70, pitch: 12, dx: 5, rot: 0.03 }],
-  [0.08, { gx: 16, gy: 20, yaw: 0, pitch: 2, dx: 6, rot: 0.06 }],
-  [0.14, { gx: 18, gy: 10, yaw: -75, pitch: 12, dx: 6, rot: 0.07 }],
-  [0.3, { gx: 2, gy: -6, yaw: -165, pitch: 48, dx: 3, rot: 0 }],
+  [0.05, { gx: -12, gy: 4, yaw: 172, pitch: 76, dx: 1, rot: 0.05, crouch: 5, turn: 0.93, z: 1 }],
+  [0.09, { gx: 0, gy: 14, yaw: 120, pitch: 32, dx: 4, rot: 0.02, crouch: 4, turn: 0.98, z: 1 }],
+  [SWING_CONTACT, { gx: 12, gy: 18, yaw: 0, pitch: 2, dx: 6, rot: -0.01, crouch: 3, turn: 1, z: 1 }],
+  [0.18, { gx: 20, gy: 12, yaw: -55, pitch: 8, dx: 6, rot: -0.03, crouch: 2, turn: 0.97, z: 1 }],
+  [0.3, { gx: 18, gy: -6, yaw: -130, pitch: 32, dx: 5, rot: -0.04, crouch: 1, turn: 0.92, z: -1 }],
+  [0.5, { gx: 14, gy: -16, yaw: -172, pitch: 40, dx: 4, rot: -0.03, crouch: 1, turn: 0.9, z: -1 }],
 ];
-export const SWING_CONTACT = 0.08;
 
 function mix(a: Pose, b: Pose, k: number): Pose {
   const l = (p: number, q: number): number => p + (q - p) * k;
-  return { gx: l(a.gx, b.gx), gy: l(a.gy, b.gy), yaw: l(a.yaw, b.yaw), pitch: l(a.pitch, b.pitch), dx: l(a.dx, b.dx), rot: l(a.rot, b.rot) };
+  return {
+    gx: l(a.gx, b.gx), gy: l(a.gy, b.gy), yaw: l(a.yaw, b.yaw), pitch: l(a.pitch, b.pitch),
+    dx: l(a.dx, b.dx), rot: l(a.rot, b.rot), crouch: l(a.crouch, b.crouch), turn: l(a.turn, b.turn), z: l(a.z, b.z),
+  };
 }
 
 /**
@@ -182,13 +209,24 @@ export function batterPose(swing: number, load: number, t: number): Pose {
   if (swing < 0) {
     const p = mix(STANCE, LOAD, Math.min(1, Math.max(0, load)));
     const wag = 1 - Math.min(1, load * 1.5);
-    return { ...p, yaw: p.yaw + Math.sin(t * 2.4) * 7 * wag, pitch: p.pitch + Math.sin(t * 2.4 + 1) * 4 * wag };
+    return { ...p, yaw: p.yaw + Math.sin(t * 2.4) * 6 * wag, pitch: p.pitch + Math.sin(t * 2.4 + 1) * 4 * wag };
   }
   for (let i = 0; i < KEYS.length - 1; i++) {
     const [ta, a] = KEYS[i], [tb, b] = KEYS[i + 1];
     if (swing <= tb) { const k = (swing - ta) / (tb - ta); return mix(a, b, k * k * (3 - 2 * k)); }
   }
   return KEYS[KEYS.length - 1][1];
+}
+
+/** Project a shared handle into the intersection of both arm-reach circles. */
+export function constrainGrip(rear: Pt, front: Pt, grip: Pt, handOffset: Pt, k: number): void {
+  const radius = (UPPER + FORE - 0.5) * k;
+  for (let i = 0; i < 12; i++) {
+    for (const c of [rear, { x: front.x - handOffset.x, y: front.y - handOffset.y }]) {
+      const dx = grip.x - c.x, dy = grip.y - c.y, dist = Math.hypot(dx, dy);
+      if (dist > radius) { grip.x = c.x + dx * radius / dist; grip.y = c.y + dy * radius / dist; }
+    }
+  }
 }
 
 /** Two-bone arm: the elbow for a shoulder→hand reach (bending out/down). */
@@ -199,8 +237,7 @@ function elbow(s: Pt, hand: Pt, bendDown: boolean, k: number): { e: Pt; h: Pt } 
   const c = Math.max(-1, Math.min(1, (U * U + d * d - F * F) / (2 * U * d)));
   const ang = Math.atan2(dy, dx) + (bendDown ? 1 : -1) * Math.acos(c);
   const e = { x: s.x + Math.cos(ang) * U, y: s.y + Math.sin(ang) * U };
-  const fa = Math.atan2(hand.y - e.y, hand.x - e.x);
-  return { e, h: { x: e.x + Math.cos(fa) * F, y: e.y + Math.sin(fa) * F } };
+  return { e, h: hand };
 }
 
 /**
@@ -228,13 +265,15 @@ export function drawBatter(d: Draw, game: Game, castFrame: number, id: string, x
   const sz = game.assets.frameSize(castFrame);
   const k = h / ART_H;
   const w = (sz.w / sz.h) * h;
-  const left = x - w / 2 + pose.dx * k, top = y - h;
-  const cx = left + w / 2, cy = top + h / 2;
+  const parts = bodyParts[id];
+  // The torso pivots at the hip: flexed knees lower it, the weight shift slides it.
+  const hip = { x: x + pose.dx * k, y: y - (ART_H - HIP) * k + pose.crouch * k };
   const cr = Math.cos(pose.rot), sr = Math.sin(pose.rot);
-  // Sprite px → world, following the body's lean about its centre.
+  const tw = parts ? pose.turn : 1;                  // coil narrows the torso (split rig only)
+  // Sprite px → world, following the torso's lean about the hip.
   const P = (px: number, py: number): Pt => {
-    const ux = left + px * k - cx, uy = top + py * k - cy;
-    return { x: cx + ux * cr - uy * sr, y: cy + ux * sr + uy * cr };
+    const ux = (px * k - w / 2) * tw, uy = (py - HIP) * k;
+    return { x: hip.x + ux * cr - uy * sr, y: hip.y + ux * sr + uy * cr };
   };
   const sh = [P(rig.sh[0].x, rig.sh[0].y), P(rig.sh[1].x, rig.sh[1].y)];
   const mid = { x: (sh[0].x + sh[1].x) / 2, y: (sh[0].y + sh[1].y) / 2 };
@@ -253,16 +292,32 @@ export function drawBatter(d: Draw, game: Game, castFrame: number, id: string, x
     const nl = Math.hypot(nx, ny) || 1;
     bx = (nx / nl) * len; by = (ny / nl) * len;
   }
+  // Both hands share the handle. Move the common grip into both arms' reach,
+  // instead of shortening a forearm and leaving its glove floating off the wrist.
+  constrainGrip(sh[0], sh[1], grip, { x: bx * 8 * k, y: by * 8 * k }, k);
   const tip = { x: grip.x + bx * BAT * k, y: grip.y + by * BAT * k };
   const knob = { x: grip.x - bx * 6 * k, y: grip.y - by * 6 * k };
   const topHand = { x: grip.x + bx * 8 * k, y: grip.y + by * 8 * k };
   const barrel = { x: grip.x + bx * BAT * 0.45 * k, y: grip.y + by * BAT * 0.45 * k };
   const drawBat = (front: boolean): void => { limb(d, knob, barrel, 5 * k, WOOD, k, front); limb(d, barrel, tip, 10 * k, WOOD, k, front); };
 
-  // Bat raised over the shoulder goes behind the head; otherwise in front of the body.
-  const behind = by < -0.35;
+  // Bat wrapped over the shoulder goes behind the head; otherwise in front of the body.
+  const behind = pose.z < 0;
   if (behind) drawBat(false);
-  d.sprite(frame, left, top, { w, h, rot: pose.rot });
+  if (parts) {
+    // Legs: feet planted, the thighs reach up to the (shifted, lowered) hip.
+    const legTop = { x: hip.x, y: hip.y - OVERLAP * k };
+    const legLen = Math.hypot(legTop.x - x, y - legTop.y);
+    const legA = Math.atan2(legTop.x - x, y - legTop.y);
+    d.sprite(parts.lower, (x + legTop.x) / 2 - w / 2, (y + legTop.y) / 2 - legLen / 2, { w, h: legLen, rot: legA });
+    // Torso and head: rows 0..HIP+OVERLAP, rotated about the hip (the engine rotates about the centre).
+    const uh = (HIP + OVERLAP) * k, uw = w * tw;
+    const c = P(w / k / 2, (HIP + OVERLAP) / 2);
+    d.sprite(parts.upper, c.x - uw / 2, c.y - uh / 2, { w: uw, h: uh, rot: pose.rot });
+  } else {
+    const c = P(w / k / 2, ART_H / 2);
+    d.sprite(frame, c.x - w / 2, c.y - h / 2, { w, h, rot: pose.rot });
+  }
   if (!behind) drawBat(true);
   const arms: [Pt, Pt, boolean][] = [[sh[0], grip, false], [sh[1], topHand, true]];
   for (const [s, target, bend] of arms) {
