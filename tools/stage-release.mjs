@@ -12,5 +12,5 @@ const assets = JSON.parse(await readFile('shared/catalog.json','utf8')).flatMap(
 for (const file of new Set(assets.map(a=>a.file))) {
   const bytes = await readFile(`${target}/${file}`); if (bytes.length < 100) throw new Error(`Invalid asset ${file}`);
 }
-await writeFile(`${target}/version.json`,JSON.stringify({version:'1.0.2', games:12, built:new Date().toISOString()}));
+await writeFile(`${target}/version.json`,JSON.stringify({version:'1.0.3', games:12, built:new Date().toISOString()}));
 console.log(`Release site ready: ${target} (12 games, offline media)`);
