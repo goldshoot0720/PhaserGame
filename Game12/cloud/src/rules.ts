@@ -8,7 +8,7 @@ export const CAST_URLS: Record<string, string> = {
 };
 const A = 'https://gameblocks.nyc3.digitaloceanspaces.com/eVdsiqEdzeb/';
 export const ART = {
-  logo: A + 'art/art/logo-de1f353228.png',
+  logo: A + 'art/art/logo-836852fee8.png',
   crate: A + 'art/blocks/blocks-1-27befd285e.png',
   house: A + 'art/blocks/blocks-2-b3210269d6.png',
   balloon: A + 'art/balloon/balloon-1-3f5ec788ee.png',

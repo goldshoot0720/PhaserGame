@@ -1,5 +1,5 @@
 ---
-title: 戰機 2026～2027 Moe Strikers
+title: 萌友戰機 2026～2027 Moe Strikers
 genre: vertical scrolling arcade shoot-em-up
 style: 90s arcade shmup, glossy candy-coloured toy jets, tropical ocean then neon nebula
 ---

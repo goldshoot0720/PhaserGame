@@ -1,12 +1,12 @@
 ---
 manifest:
 category: game
-title: 戰機 2026～2027 Moe Strikers
+title: 萌友戰機 2026～2027 Moe Strikers
 summary: Vertical arcade shooter — pick one of eight pilots (eight shot types), auto-fire through two stages (2026 ocean, 2027 space), power up to Lv.4, bomb out of danger, beat a midboss and a three-phase boss each year.
 render: webgpu
 ---
 
-# 戰機 2026～2027
+# 萌友戰機 2026～2027
 Role: Single-player shmup.
 
 ## Invariants

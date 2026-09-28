@@ -8,7 +8,7 @@ export const CAST_URLS: Record<string, string> = {
 };
 const A = 'https://gameblocks.nyc3.digitaloceanspaces.com/fvhg1h7jEMG/';
 export const ART = {
-  logo: A + 'art/2026-2027/logo-6958b9b65e.png',
+  logo: A + 'art/2026-2027/logo-f63a5d1642.png',
   jet: A + 'art/ships-a/ships-a-1-7a31cc0661.png',
   drone: A + 'art/ships-a/ships-a-2-4d109e960d.png',
   fighter: A + 'art/ships-b/ships-b-1-e64a532bd0.png', // two stacked copies → split into 2 frames

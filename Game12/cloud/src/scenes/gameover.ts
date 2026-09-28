@@ -30,7 +30,7 @@ export class GameOver extends Scene {
     const W = this.width, H = this.height, cx = W / 2, g = this.game;
     backdrop(d, W, H, this.t);
     const rs = session.results, top = rs[0], won = session.winner === 0;
-    const title = session.winner < 0 ? '平手！不分勝負' : won ? '你贏得水球大作戰！' : `${top?.name ?? ''} 獲得勝利`;
+    const title = session.winner < 0 ? '平手！不分勝負' : won ? '你贏得萌友水球大作戰！' : `${top?.name ?? ''} 獲得勝利`;
     label(d, g, title, cx, 60, { size: 50, color: won ? '#ffe066' : '#ffffff', stroke: '#1a4a8a', strokeWidth: 9, weight: 900 });
     label(d, g, `共進行 ${session.rounds} 回合`, cx, 108, { size: 22, color: '#ffffff', stroke: '#1a4a8a', strokeWidth: 4 });
     if (top && session.winner >= 0) {

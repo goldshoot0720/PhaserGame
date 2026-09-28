@@ -1,12 +1,12 @@
 ---
 manifest:
 category: game
-title: 水球大作戰 Moe Balloon Battle
+title: 萌友水球大作戰 Moe Balloon Battle
 summary: Four-player Crazy Arcade-style water balloon battle — break crates, grab upgrades, trap rivals in bubbles and pop them; first to win two rounds takes the match.
 render: webgpu
 ---
 
-# 水球大作戰
+# 萌友水球大作戰
 Role: You vs three bots, best of three (tie-break rounds up to five).
 
 ## Invariants

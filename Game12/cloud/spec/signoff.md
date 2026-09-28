@@ -1,1 +1,1 @@
-First full version of 水球大作戰: Crazy Arcade-style 4-player water balloon battle on a 15×13 grid — chain reactions, bubble traps (rivals pop you, needles free you), 5 item types, corner-sliding movement, bots with danger-map escape planning, best-of-3 match, generated crates/cottages/balloon/items, logo and music. 21 rule tests + headless play-test.
+Renamed to 萌友水球大作戰 with a new wide title logo; title screen layout adjusted to fit it.

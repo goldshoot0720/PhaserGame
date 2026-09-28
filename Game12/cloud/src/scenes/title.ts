@@ -32,10 +32,10 @@ export class Title extends Scene {
       spriteB(d, g, this.f[h.id], x, y, 140, { flipX: i >= 4 });
       if (i % 3 === 0) spriteB(d, g, this.f.balloon, x + 40, H - 20, 44);
     });
-    const sz = g.assets.frameSize(this.f.logo), lh = Math.min(280, H * 0.4), lw = (sz.w / sz.h) * lh;
-    d.sprite(this.f.logo, cx - lw / 2, 14 + Math.sin(this.t * 2) * 5, { w: lw, h: lh });
-    label(d, g, 'Moe Balloon Battle', cx, lh + 30, { size: 30, color: '#ffffff', stroke: '#1a4a8a', strokeWidth: 6, weight: 900 });
-    label(d, g, '四人水球大亂鬥・被水柱打中會困在泡泡裡・先拿下 2 回合的人獲勝', cx, lh + 70, { size: 21, color: '#ffffff', stroke: '#1a4a8a', strokeWidth: 5 });
-    if (Math.sin(this.t * 5) > -0.3) label(d, g, '點擊或按 Space 開始', cx, lh + 116, { size: 30, color: '#ffe066', stroke: '#1a4a8a', strokeWidth: 6 });
+    const sz = g.assets.frameSize(this.f.logo), lw = Math.min(W * 0.86, 1000), lh = (sz.h / sz.w) * lw;
+    d.sprite(this.f.logo, cx - lw / 2, 50 + Math.sin(this.t * 2) * 5, { w: lw, h: lh });
+    label(d, g, 'Moe Balloon Battle', cx, lh + 90, { size: 30, color: '#ffffff', stroke: '#1a4a8a', strokeWidth: 6, weight: 900 });
+    label(d, g, '四人水球大亂鬥・被水柱打中會困在泡泡裡・先拿下 2 回合的人獲勝', cx, lh + 136, { size: 21, color: '#ffffff', stroke: '#1a4a8a', strokeWidth: 5 });
+    if (Math.sin(this.t * 5) > -0.3) label(d, g, '點擊或按 Space 開始', cx, lh + 190, { size: 30, color: '#ffe066', stroke: '#1a4a8a', strokeWidth: 6 });
   }
 }

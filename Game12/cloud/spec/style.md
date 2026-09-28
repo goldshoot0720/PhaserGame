@@ -1,5 +1,5 @@
 ---
-title: 水球大作戰 Moe Balloon Battle
+title: 萌友水球大作戰 Moe Balloon Battle
 genre: Crazy Arcade / Bomberman-style water balloon arena
 style: bright candy toy town, glossy blue water balloons, pastel cottages and ribbon crates
 ---
