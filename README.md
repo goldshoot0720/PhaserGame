@@ -18,8 +18,8 @@
 | `Game8` | 萌友卡牌對決 | 卡牌對戰 | [遊玩](https://phaser.io/agent/local/peC2fwqocRE) |
 | `Game9` | 萌友大富翁 | 大富翁 | [遊玩](https://phaser.io/agent/local/P9PoxCYxWb4) |
 | `Game10` | 萌友瘋狂坦克 | 回合制砲擊 | [遊玩](https://phaser.io/agent/local/bCmTFAj6tW4) |
-| `Game11` | 戰機 2026～2027 | 縱向街機射擊 | [遊玩](https://phaser.io/agent/local/fvhg1h7jEMG) |
-| `Game12` | 水球大作戰 | 爆爆王式水球對戰 | [遊玩](https://phaser.io/agent/local/eVdsiqEdzeb) |
+| `Game11` | 萌友戰機 2026～2027 | 縱向街機射擊 | [遊玩](https://phaser.io/agent/local/fvhg1h7jEMG) |
+| `Game12` | 萌友水球大作戰 | 爆爆王式水球對戰 | [遊玩](https://phaser.io/agent/local/eVdsiqEdzeb) |
 
 ## 本機版（Vite）
 
@@ -31,6 +31,6 @@
 | `Game4/guide` | 洛克英雄攻略網站 | 以瀏覽器開啟 `index.html` |
 | `Game5` | 格鬥王 | `npm ci && npm run dev` |
 | `Game6` | 戰棋 | 在 `Game6` 執行 `python3 -m http.server 8766` |
-| `Game12` | 水球大作戰 | `npm ci && npm run dev` |
+| `Game12` | 萌友水球大作戰 | `npm ci && npm run dev` |
 
 其餘遊戲的本機版本仍在補齊中，將在完成後另行提交；上方線上版已可完整遊玩。

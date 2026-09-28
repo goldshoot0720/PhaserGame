@@ -1,6 +1,6 @@
-# 萌友卡牌對決 Moe Card Duel（Game9 雲端版）
+# 萌友大富翁 Moe Monopoly（Game9 雲端版）
 
-- 線上遊玩：https://phaser.io/agent/local/peC2fwqocRE
-- Phaser Game Agent 專案 ID：`peC2fwqocRE`
+- 線上遊玩：https://phaser.io/agent/local/P9PoxCYxWb4
+- Phaser Game Agent 專案 ID：`P9PoxCYxWb4`
 
 這裡是 Phaser Game Agent 雲端工作區的原始碼（`src/`、`spec/`）。遊戲引擎（Phaser AE v2）與建置工具只存在於雲端工作區，不包含在此資料夾；要修改或重新發佈，請用 Phaser Game Agent MCP 開啟上述專案 ID。美術與音樂由雲端生成，以 CDN 網址載入。規則測試位於 `src/verify.ts`。
