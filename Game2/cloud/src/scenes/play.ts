@@ -6,6 +6,7 @@ import { label, panel, clamp, lerp } from '../ui.js';
 import { baller, RUN_SPEED, DEPTH_FACTOR, PASS_SPEED, STEAL_RANGE, BLOCK_RANGE, BLOCK_MIN_Z, CONTEST_RANGE, METER_TIME, METER_SWEET, ART, type Baller } from '../data.js';
 import { HOOP, RIM_HEIGHT, TOP_OF_KEY, clampToCourt, isThree, hoopDist, floorDist, depthScale, halfWidth, TOP_Y, BOTTOM_Y } from '../court.js';
 import { Match, shotChance, meterQuality, blockChance, type Side } from '../rules.js';
+import { prepareShooters, drawShooter, shotHand, SHOT_RELEASE, SHOT_FINISH } from '../shooter.js';
 import { session } from '../session.js';
 
 interface P {
@@ -17,6 +18,7 @@ interface P {
   spot: { x: number; y: number };
   retarget: number;
   moving: boolean;
+  shot: { age: number; timing: number; released: boolean } | null;
 }
 
 type BallMode = 'held' | 'pass' | 'shot' | 'loose' | 'dead';
@@ -56,6 +58,7 @@ export class Play extends Scene {
 
   override setup(): void {
     this.f = registerArt(this.game);
+    prepareShooters(this.game);
     this.input.bind({
       left: ['ArrowLeft', 'KeyA'], right: ['ArrowRight', 'KeyD'], up: ['ArrowUp', 'KeyW'], down: ['ArrowDown', 'KeyS'],
       shoot: ['Space', 'KeyJ'], pass: ['KeyK', 'KeyX'], sw: ['KeyQ', 'KeyL'], sprint: ['ShiftLeft', 'ShiftRight'], quit: ['Escape'],
@@ -70,7 +73,7 @@ export class Play extends Scene {
 
     const mk = (id: string, side: Side, idx: number): P => ({
       b: baller(id), side, idx, x: 512, y: 500, z: 0, vz: 0, facing: 1, stun: 0, windup: 0,
-      spot: { x: 512, y: 500 }, retarget: 0, moving: false,
+      spot: { x: 512, y: 500 }, retarget: 0, moving: false, shot: null,
     });
     this.ps = [...session.team.map((id, i) => mk(id, 0, i)), ...session.cpu.map((id, i) => mk(id, 1, i))];
     this.ctrl = this.ps[0];
@@ -87,8 +90,8 @@ export class Play extends Scene {
   /** Reset to a check at the top of the key for the possession team. */
   private checkBall(note: string): void {
     const off = this.team(this.m.possession), def = this.team((1 - this.m.possession) as Side);
-    off.forEach((p, i) => { const s = i === 0 ? TOP_OF_KEY : OFF_SPOTS[i - 1]; p.x = s.x; p.y = s.y + (i === 0 ? 20 : 0); p.z = 0; p.vz = 0; p.windup = 0; p.stun = 0; });
-    def.forEach((p, i) => { const o = off[i]; p.x = lerp(o.x, HOOP.x, 0.22); p.y = lerp(o.y, HOOP.y, 0.22); p.z = 0; p.vz = 0; p.windup = 0; p.stun = 0; });
+    off.forEach((p, i) => { const s = i === 0 ? TOP_OF_KEY : OFF_SPOTS[i - 1]; p.x = s.x; p.y = s.y + (i === 0 ? 20 : 0); p.z = 0; p.vz = 0; p.windup = 0; p.stun = 0; p.shot = null; });
+    def.forEach((p, i) => { const o = off[i]; p.x = lerp(o.x, HOOP.x, 0.22); p.y = lerp(o.y, HOOP.y, 0.22); p.z = 0; p.vz = 0; p.windup = 0; p.stun = 0; p.shot = null; });
     this.give(off[0]);
     this.m.mustClear = false;
     this.m.shotClock = 12;
@@ -116,6 +119,13 @@ export class Play extends Scene {
   }
 
   private release(p: P, timing: number): void {
+    if (this.holder() !== p || p.shot) return;
+    p.shot = { age: 0, timing, released: false };
+    p.windup = 0; p.moving = false;
+    p.vz = 260 + p.b.jump * 12;
+  }
+
+  private launchShot(p: P, timing: number): void {
     const b = this.ball;
     if (b.holder !== p) return;
     const three = isThree(p.x, p.y);
@@ -128,10 +138,10 @@ export class Play extends Scene {
       contest = Math.max(contest, clamp(1 - fd / CONTEST_RANGE, 0, 1) * (d.z > 8 ? 1.2 : 1));
       if (d.z > BLOCK_MIN_Z && fd < BLOCK_RANGE && !blocker) blocker = d;
     }
-    p.z = 0; p.vz = 260 + p.b.jump * 12; // jump shot
+    const hand = shotHand(1, SHOT_RELEASE, 128 * depthScale(p.y));
     b.mode = 'shot'; b.holder = null; b.shooter = p; b.three = three;
-    b.from = { x: p.x, y: p.y, z: 70 };
-    b.x = p.x; b.y = p.y; b.z = 70; b.t = 0;
+    b.from = { x: p.x + hand.x * p.facing, y: p.y, z: p.z + hand.z };
+    b.x = b.from.x; b.y = b.from.y; b.z = b.from.z; b.t = 0;
     b.dur = 0.55 + dist / 900;
     b.blocked = false;
     if (blocker && rng() < blockChance(blocker.b.jump, p.b.jump)) {
@@ -224,6 +234,15 @@ export class Play extends Scene {
     for (const p of this.ps) if (p !== this.ctrl) this.ai(p, dt, think);
     this.physics2(dt);
     this.updateBall(dt);
+    // Launch after held-ball positioning: the first free-flight frame starts at the fingertips.
+    for (const p of this.ps) if (p.shot) {
+      if (!p.shot.released && this.holder() !== p) { p.shot = null; continue; }
+      const previous = p.shot.age; p.shot.age += dt;
+      if (!p.shot.released && previous < SHOT_RELEASE && p.shot.age >= SHOT_RELEASE) {
+        p.shot.released = true; this.launchShot(p, p.shot.timing);
+      }
+      if (p.shot.age >= SHOT_FINISH && p.z <= 0) p.shot = null;
+    }
 
     // Clear-the-ball rule.
     const h = this.holder();
@@ -235,6 +254,7 @@ export class Play extends Scene {
 
   private userInput(dt: number): void {
     const k = this.input.keys, c = this.ctrl;
+    if (c.shot) { c.moving = false; return; }
     if (c.stun > 0) { c.stun -= dt; c.moving = false; return; }
     let dx = (k.right.held ? 1 : 0) - (k.left.held ? 1 : 0);
     let dy = (k.down.held ? 1 : 0) - (k.up.held ? 1 : 0);
@@ -303,6 +323,7 @@ export class Play extends Scene {
     if (p.stun > 0) { p.stun -= dt; p.moving = false; return; }
     const b = this.ball;
     const offense = p.side === this.m.possession;
+    if (p.shot) { p.moving = false; return; }
 
     // Loose ball: nearest two of each side chase it.
     if (b.mode === 'loose') {
@@ -380,7 +401,11 @@ export class Play extends Scene {
       case 'held': {
         const h = b.holder!;
         b.x = h.x + h.facing * 16; b.y = h.y + 2;
-        b.z = h.z + (h.windup > 0 || this.meter >= 0 ? 70 : Math.abs(Math.sin(this.t * 8)) * 40 + 8);
+        const gather = h.shot ? 1 : h.windup > 0 ? 1-h.windup/0.42 : h === this.ctrl && this.meter >= 0 ? Math.min(1,this.meter/0.6) : -1;
+        if (gather >= 0) {
+          const hand=shotHand(gather,h.shot?.age ?? -1,128*depthScale(h.y));
+          b.x=h.x+hand.x*h.facing;b.y=h.y;b.z=h.z+hand.z;
+        } else b.z=h.z+Math.abs(Math.sin(this.t*8))*40+8;
         if (h.moving && Math.abs(Math.sin(this.t * 8)) < 0.12 && Math.abs(Math.sin((this.t - dt) * 8)) >= 0.12) this.sound.play('bounce');
         break;
       }
@@ -490,7 +515,9 @@ export class Play extends Scene {
         const h = 128 * ds;
         const bob = p.moving ? Math.abs(Math.sin(this.t * 12 + p.idx)) * 4 : 0;
         const tint = p.stun > 0 ? '#aaaaaa' : undefined;
-        drawChar(d, g, this.f.cast[p.b.id], this.wx(p.x), this.wy(p.y) - p.z * s - bob, h, { flipX: p.facing < 0, tint });
+        const gather = p.shot ? 1 : p.windup > 0 ? 1-p.windup/0.42 : p === this.ctrl && this.meter >= 0 ? Math.min(1,this.meter/0.6) : -1;
+        if (gather >= 0) drawShooter(d,g,this.f.cast[p.b.id],p.b.id,this.wx(p.x),this.wy(p.y)-p.z*s,h,gather,p.shot?.age ?? -1,p.facing);
+        else drawChar(d, g, this.f.cast[p.b.id], this.wx(p.x), this.wy(p.y) - p.z * s - bob, h, { flipX: p.facing < 0, tint });
         if (p === this.ctrl) {
           const ty = this.wy(p.y) - p.z * s - h - 16;
           d.fill([{ x: this.wx(p.x) - 10, y: ty - 12 }, { x: this.wx(p.x) + 10, y: ty - 12 }, { x: this.wx(p.x), y: ty }], '#39c6ff');
