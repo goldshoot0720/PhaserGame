@@ -9,10 +9,10 @@
   },
   {
     "id": 2,
-    "source": "https://phaser.games/bundle/qShMT5e7fmJ?v=e2b81d5a510b1679",
-    "originalSha256": "e2b81d5a510b16797277276501cc0de9e7b87954a35e7f28c4f865f330a6b0e8",
-    "localSha256": "da4a6958801586eaee4d98e6648610388ec57eae0e72fc893ed3c459a9d79b8e",
-    "bytes": 1136671,
+    "source": "https://phaser.games/bundle/qShMT5e7fmJ?v=b4b8fc759661bae2",
+    "originalSha256": "b4b8fc759661bae24e73a12b0dec86d32f8e588f8ddfbac79401db051f626edc",
+    "localSha256": "14946a4784792430af383f80a71d84f24438fc7b06ef5e4aef1d5ce416e243b9",
+    "bytes": 1142919,
     "change": "Game asset origin only; complete game and engine license retained."
   },
   {
