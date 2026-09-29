@@ -12,3 +12,6 @@ release/
 packaging/windows/site/
 *.jks
 *.keystore
+
+# Stray local copy (Game12 deps + original character images); keep out of the repo.
+Game1/Game1/
